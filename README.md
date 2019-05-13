@@ -53,9 +53,9 @@ Admin {
 ```
 ## Ejs Template
 #### basic
-+ [ ] header ->Song
-+ [ ] navigation-bar ->Song
-+ [ ] footer ->Song
++ [x] header ->Song
++ [x] navigation-bar ->Song
++ [x] footer ->Song
 + [ ] login-dialog ->Song
 + [ ] query ->Lee
 + [ ] about ->Song
@@ -92,6 +92,7 @@ Admin {
 + logout
 + query
 + about
++ user
 ### POST
 ```
 login {
@@ -117,14 +118,7 @@ query/cc-info {
 }->Lee
 
 update/student {
-    {
-        studentID
-    }
-    OR
-    {
-        major
-        courseID
-    }
+    Student
 }->Lee
 
 update/course {
@@ -156,7 +150,14 @@ insert/cc-info {
 }->Song
 
 statistics/students {
-    Student
+    {
+        studentID
+    }
+    OR
+    {
+        major
+        courseID
+    }
 }->Lee
 ```
 ### DELETE
