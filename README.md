@@ -53,18 +53,19 @@ Admin {
 ```
 ## Ejs Template
 #### basic
-+ [ ] header
-+ [ ] navigation-bar
-+ [ ] footer
-+ [ ] login-dialog
-+ [ ] user-register
-+ [ ] query
-+ [ ] about
-+ [ ] index
++ [ ] header ->Song
++ [ ] navigation-bar ->Song
++ [ ] footer ->Song
++ [ ] login-dialog ->Song
++ [ ] query ->Lee
++ [ ] about ->Song
++ [ ] index ->Song
++ [ ] insert ->Song
++ [ ] statistic ->Lee
 #### student
-+ [ ] student-table
-+ [ ] student-detail
-+ [ ] student-edit-dialog
++ [ ] student-table  ->Lee
++ [ ] student-detail ->Song
++ [ ] student-edit-dialog -> Lee
 #### teacher
 + [ ] teacher-table
 + [ ] teacher-detail
@@ -97,23 +98,23 @@ login {
     userID : str
     password : str
     userType : str {student, teacher, admin}
-}
+}->Song
 
 query/student {
     Student
-}
+}->Lee
 
 query/course {
     Course
-}
+}->Lee
 
 query/teacher {
     Teacher
-}
+}->Lee
 
 query/cc-info {
     CourseChoosingInformation
-}
+}->Lee
 
 update/student {
     {
@@ -124,60 +125,60 @@ update/student {
         major
         courseID
     }
-}
+}->Lee
 
 update/course {
     Course
-}
+}->Lee
 
 update/teacher {
     Teacher
-}
+}->Lee
 
 update/cc-info {
     CourseChoosingInformation
-}
+}->Lee
 
 insert/student {
     Student
-}
+}->Song
 
 insert/course {
     Course
-}
+}->Song
 
 insert/teacher {
     Teacher
-}
+}->Song
 
 insert/cc-info {
     CourseChoosingInformation
-}
+}->Song
 
 statistics/students {
     Student
-}
+}->Lee
 ```
 ### DELETE
 ```
 student {
     studentID
-}
+}->Lee
 
 course {
     courseID
-}
+}->Lee
 
 teacher {
     teacherID
-}
+}->Lee
 
 cc-info {
     studentID
     courseID
     teacherID
     chosenYear
-}
+}->Lee
 ```
 
 ## Model
@@ -185,6 +186,6 @@ cc-info {
 class User{
     static checkCredential(id, password, userType, callback){callback(error, valid)};
     static updatePassword(id, userType, newPassword, callback){callback(error)};
-}
+} //->Song
 
 ```
