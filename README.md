@@ -10,47 +10,6 @@
 + [ ] Information collection
 + [ ] Message system
 
-## Data Model
-```
-Student {
-    studentID
-    name
-    sex
-    entranceAge
-    entranceYear
-    major
-    password
-}
-
-Course {
-    courseID
-    name
-    teacherID
-    credit
-    grade
-    canceledYear
-    password
-}
-
-Teacher {
-    teacherID
-    name
-    courses
-}
-
-CourseChoosingInformation {
-    studentID
-    courseID
-    teacherID
-    chosenYear
-    score
-}
-
-Admin {
-    adminID
-    password
-}
-```
 ## Ejs Template
 #### basic
 + [x] header ->Song
@@ -62,6 +21,9 @@ Admin {
 + [ ] index ->Song
 + [ ] insert ->Song
 + [ ] statistic ->Lee
++ [ ] message ->Song
++ [ ] error ->Song
++ [ ] 404 ->Song
 #### student
 + [ ] student-table  ->Lee
 + [ ] student-detail ->Song
@@ -118,18 +80,25 @@ query/cc-info {
 }->Lee
 
 update/student {
+    studentID
     Student
 }->Lee
 
 update/course {
+    courseID
     Course
 }->Lee
 
 update/teacher {
+    teacherID
     Teacher
 }->Lee
 
 update/cc-info {
+    studentID
+    courseID
+    teacherID
+    chosenYear
     CourseChoosingInformation
 }->Lee
 
@@ -189,4 +158,46 @@ class User{
     static updatePassword(id, userType, newPassword, callback){callback(error)};
 } //->Song
 
+```
+
+## Data Model
+```
+Student {
+    studentID
+    name
+    sex
+    entranceAge
+    entranceYear
+    major
+    password
+}
+
+Course {
+    courseID
+    name
+    teacherID
+    credit
+    grade
+    canceledYear
+    password
+}
+
+Teacher {
+    teacherID
+    name
+    courses
+}
+
+CourseChoosingInformation {
+    studentID
+    courseID
+    teacherID
+    chosenYear
+    score
+}
+
+Admin {
+    adminID
+    password
+}
 ```

@@ -10,6 +10,8 @@ const insertRouter = require('./routes/insert');
 const queryRouter = require('./routes/query');
 const updateRouter = require('./routes/update');
 
+require('./models/data');
+
 const app = express();
 
 // view engine setup
