@@ -21,3 +21,12 @@
 .navigation-bar li a:hover {
     background-color: #111;
 }
+
+.system-message {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.system-message p {
+    margin-top: 20px;
+}
