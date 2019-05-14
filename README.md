@@ -17,7 +17,7 @@
 + [x] footer ->Song
 + [ ] login-dialog ->Song
 + [ ] query ->Lee
-+ [ ] about ->Song
++ [x] about ->Song
 + [ ] index ->Song
 + [ ] insert ->Song
 + [ ] statistic ->Lee
