@@ -15,15 +15,15 @@
 + [x] header ->Song
 + [x] navigation-bar ->Song
 + [x] footer ->Song
-+ [ ] login-dialog ->Song
++ [x] login-dialog ->Song
 + [x] query ->Lee
 + [x] about ->Song
 + [ ] index ->Song
 + [ ] insert ->Song
 + [ ] statistic ->Lee
-+ [ ] message ->Song
-+ [ ] error ->Song
-+ [ ] 404 ->Song
++ [x] message ->Song
++ [x] error ->Song
++ [x] 404 ->Song
 #### student
 + [ ] student-table  ->Lee
 + [ ] student-detail ->Song
