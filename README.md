@@ -17,7 +17,7 @@
 + [x] footer ->Song
 + [ ] login-dialog ->Song
 + [ ] query ->Lee
-+ [ ] about ->Song
++ [x] about ->Song
 + [ ] index ->Song
 + [ ] insert ->Song
 + [ ] statistic ->Lee
@@ -184,6 +184,7 @@ Course {
 Teacher {
     teacherID
     name
+    sex
     courses
     password
 }
@@ -199,5 +200,6 @@ CourseChoosingInformation {
 Admin {
     adminID
     password
+    name
 }
 ```

@@ -9,4 +9,11 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/about', function (req, res, next) {
+  res.render('about',{
+    info: req.flash('error'),
+    error: req.flash('error')
+  });
+});
+
 module.exports = router;
