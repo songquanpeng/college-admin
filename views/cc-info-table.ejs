@@ -1,0 +1,40 @@
+<h2>Query result</h2>
+<p>The query result is shown below. You can click edit, delete or view buttons for further action.</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Student ID</th>
+        <th>Course ID</th>
+        <th>Teacher ID</th>
+        <th>Chosen Year</th>
+        <th>Score</th>
+        <th class="modify">Edit</th>
+        <th class="modify">Delete</th>
+        <th>Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (CCIs.length()){ %>
+        <% CCIs.forEach((CCI)=>{ %>
+            <tr>
+                <td><%= CCI.studentID %></td>
+                <td><%= CCI.courseID %></td>
+                <td><%= CCI.teacherID %></td>
+                <td><%= CCI.chosenYear %></td>
+                <td><%= CCI.score %></td>
+                <td class="modify">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showEditDialog(<%= CCI.courseID %>)">EDIT</button>
+                </td>
+                <td class="modify">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteDialog(<%= CCI.courseID %>)">DELETE</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-dark btn-sm">VIEW</button>
+                </td>
+            </tr>
+    <% })}else{ %>
+        <p>Nothing matches your query options.</p>
+    <% } %>
+    </tbody>
+</table>
+<script>hideModifyBtn(<%= userType %>)</script>
