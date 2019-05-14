@@ -1,5 +1,5 @@
-function hideModifyBtn(isStudent) {
-    if (isStudent){
+function hideModifyBtn(userType) {
+    if (userType === "student"){
         let elements = document.getElementsByClassName("modify");
         for (let i=0; i<elements.length; i++){
             elements[i].hidden = true;

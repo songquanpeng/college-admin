@@ -25,22 +25,22 @@
 + [x] error ->Song
 + [x] 404 ->Song
 #### student
-+ [ ] student-table  ->Lee
++ [x] student-table  ->Lee
 + [ ] student-detail ->Song
 + [x] student-edit-dialog -> Lee
 + [x] student-delete-dialog -> Lee
 #### teacher
-+ [ ] teacher-table
++ [x] teacher-table
 + [ ] teacher-detail
 + [ ] teacher-edit-dialog
 + [ ] teacher-delete-dialog
 #### course
-+ [ ] course-table
++ [x] course-table
 + [ ] course-detail
 + [ ] course-edit-dialog
 + [ ] course-delete-dialog
 #### cc-info
-+ [ ] cc-info-table
++ [x] cc-info-table
 + [ ] cc-info-detail
 + [ ] cc-info-edit-dialog
 + [ ] cc-info-delete-dialog

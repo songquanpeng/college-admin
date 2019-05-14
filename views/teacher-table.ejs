@@ -1,0 +1,38 @@
+<h2>Query result</h2>
+<p>The query result is shown below. You can click edit, delete or view buttons for further action.</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Teacher ID</th>
+        <th>Name</th>
+        <th>Sex</th>
+        <th>Course</th>
+        <th class="modify">Edit</th>
+        <th class="modify">Delete</th>
+        <th>Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (teachers.length()){ %>
+        <% teachers.forEach((teacher)=>{ %>
+            <tr>
+                <td><%= teacher.teacherID %></td>
+                <td><%= teacher.name %></td>
+                <td><%= teacher.sex %></td>
+                <td><%= teacher.courses %></td>
+                <td class="modify">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showEditDialog(<%= teacher.teacherID %>)">EDIT</button>
+                </td>
+                <td class="modify">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteDialog(<%= teacher.teacherID %>)">DELETE</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-dark btn-sm">VIEW</button>
+                </td>
+            </tr>
+    <% })}else{ %>
+        <p>Nothing matches your query options.</p>
+    <% } %>
+    </tbody>
+</table>
+<script>hideModifyBtn(<%= userType %>)</script>
