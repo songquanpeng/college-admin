@@ -184,6 +184,7 @@ Course {
 Teacher {
     teacherID
     name
+    sex
     courses
     password
 }
@@ -199,5 +200,6 @@ CourseChoosingInformation {
 Admin {
     adminID
     password
+    name
 }
 ```
