@@ -16,7 +16,7 @@
 + [x] navigation-bar ->Song
 + [x] footer ->Song
 + [ ] login-dialog ->Song
-+ [ ] query ->Lee
++ [x] query ->Lee
 + [x] about ->Song
 + [ ] index ->Song
 + [ ] insert ->Song
@@ -27,19 +27,23 @@
 #### student
 + [ ] student-table  ->Lee
 + [ ] student-detail ->Song
-+ [ ] student-edit-dialog -> Lee
++ [x] student-edit-dialog -> Lee
++ [x] student-delete-dialog -> Lee
 #### teacher
 + [ ] teacher-table
 + [ ] teacher-detail
 + [ ] teacher-edit-dialog
++ [ ] teacher-delete-dialog
 #### course
 + [ ] course-table
 + [ ] course-detail
 + [ ] course-edit-dialog
++ [ ] course-delete-dialog
 #### cc-info
 + [ ] cc-info-table
 + [ ] cc-info-detail
 + [ ] cc-info-edit-dialog
++ [ ] cc-info-delete-dialog
 #### message
 + [ ] message-list
 + [ ] message-detail

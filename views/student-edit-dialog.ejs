@@ -1,0 +1,53 @@
+<div class="modal fade" id="editDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Student Information</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form>
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="oSID">Original Student ID:</label>
+                        <input type="text" class="form-control" id="oSID" name="oSID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="sID">Student ID:</label>
+                        <input type="text" class="form-control" id="sID" name="sID" placeholder="Enter student ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="sName">Student Name:</label>
+                        <input type="text" class="form-control" id="sName" name="sName" placeholder="Enter student's name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Sex:</label>
+                        <input type="text" class="form-control" id="sex" name="sex" placeholder="Enter student's sex">
+                    </div>
+                    <div class="form-group">
+                        <label for="enAge">Entrance Age:</label>
+                        <input type="text" class="form-control" id="enAge" name="enAge" placeholder="Enter entrance age">
+                    </div>
+                    <div class="form-group">
+                        <label for="enYear">Entrance Year:</label>
+                        <input type="text" class="form-control" id="enYear" name="enYear" placeholder="Enter entrance year">
+                    </div>
+                    <div class="form-group">
+                        <label for="maj">Major/Class:</label>
+                        <input type="text" class="form-control" id="maj" name="maj" placeholder="Enter major or class">
+                    </div>
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
