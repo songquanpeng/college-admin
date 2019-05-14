@@ -179,13 +179,13 @@ Course {
     credit
     grade
     canceledYear
-    password
 }
 
 Teacher {
     teacherID
     name
     courses
+    password
 }
 
 CourseChoosingInformation {
