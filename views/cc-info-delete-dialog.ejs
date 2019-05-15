@@ -1,0 +1,43 @@
+<div class="modal fade" id="cciDeleteDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Course Choosing Information</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form>
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    <div>
+                        <h5>Are you sure to delete?</h5>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciDelSID">Deleting Student ID:</label>
+                        <input type="text" class="form-control" id="cciDelSID" name="cciDelSID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciDelCID">Deleting Course ID:</label>
+                        <input type="text" class="form-control" id="cciDelCID" name="cciDelCID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciDelTID">Deleting Teacher ID:</label>
+                        <input type="text" class="form-control" id="cciDelTID" name="cciDelTID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciDelChoYear">Deleting Chosen Year:</label>
+                        <input type="text" class="form-control" id="cciDelChoYear" name="cciDelChoYear" value="No input" readonly>
+                    </div>
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
