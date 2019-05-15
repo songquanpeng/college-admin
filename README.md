@@ -20,7 +20,7 @@
 + [x] about ->Song
 + [ ] index ->Song
 + [ ] insert ->Song
-+ [ ] statistic ->Lee
++ [x] statistic ->Lee
 + [x] message ->Song
 + [x] error ->Song
 + [x] 404 ->Song
@@ -43,7 +43,7 @@
 + [x] cc-info-table
 + [ ] cc-info-detail
 + [x] cc-info-edit-dialog
-+ [ ] cc-info-delete-dialog
++ [x] cc-info-delete-dialog
 #### message
 + [ ] message-list
 + [ ] message-detail
