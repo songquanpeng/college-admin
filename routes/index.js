@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Data = require("../models/Data").Data;
 
-//const record = require('../middlewares/record').record;
-
 
 router.get('/', function (req, res, next) {
     res.render('index', {
@@ -23,7 +21,19 @@ router.get('/user', function (req, res, next) {
     if (req.session.user === undefined) {
         res.render("login", {error: req.flash('error'), info: req.flash('info')});
     } else {
-        res.send("Your personal info will be showed here.");
+        res.render("student-detail", {
+            student: {
+                studentID: "20173333",
+                name: "SMZ",
+                sex: "Female",
+                entranceAge: "18",
+                entranceYear: "2017",
+                major: "CS",
+                password: "233"
+            },
+            error: req.flash('error'),
+            info: req.flash('info')
+        })
     }
 });
 

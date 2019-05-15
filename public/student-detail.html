@@ -2,9 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="javascript/jquery-3.3.1.min.js"></script>
+    <script src="javascript/popper.min.js"></script>
+    <script src="javascript/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="stylesheet/bootstrap.css">
+    <link rel="stylesheet" href="stylesheet/w3.css">
+    <link rel="stylesheet" href="stylesheet/main.css">
+    <script src="javascript/main.js"></script>
+    <title>Awesome-MIS</title>
 </head>
 <body>
-$END$
+<div class="container" style="max-width: 500px" >
+    <form action="/update/student" method="post">
+        <h2>Details</h2>
+        <div class="form-group">
+            <label for="studentID">Student ID:</label>
+            <input type="text" class="form-control" id="studentID" name="studentID" readonly>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <div data-toggle="buttons" id="sex">
+                <label class="btn btn-light">
+                    <input type="radio" name="userType" value="male"> Male
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="userType" value="Female"> Female
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="entranceAge">Entrance Age:</label>
+            <input type="number" class="form-control" id="entranceAge" name="entranceAge" min="0" max="200" step="1">
+        </div>
+        <div class="form-group">
+            <label for="entranceYear">Entrance Year:</label>
+            <input type="number" class="form-control" id="entranceYear" name="entranceYear" min="2000" max="2100" step="1">
+        </div>
+        <div class="form-group">
+            <label for="major">Major:</label>
+            <input type="text" class="form-control" id="major" name="major">
+        </div>
+        <div class="w3-center">
+            <button type="reset" class="btn btn-danger">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit Changes</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

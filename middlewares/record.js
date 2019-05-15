@@ -14,7 +14,7 @@ module.exports = {
             userType = req.session.user.userType;
             userID = req.session.user.userID;
         }
-        console.log(time+" "+userType+" "+userID+" "+ip);
+        //console.log(time+" "+userType+" "+userID+" "+ip);
         db.run('INSERT INTO system_log (time, userType, userID, ip) VALUES (?, ?, ?, ?)', time, userType, userID, ip, (error)=>{
             if(error){
                 console.error(error.message);
