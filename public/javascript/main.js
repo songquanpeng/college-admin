@@ -7,14 +7,39 @@ function hideModifyBtn(userType) {
     }
 }
 
-function showEditDialog(originSID) {
+function showStudentEditDialog(originSID) {
     // set value the original student ID of the edit dialog
-    $('#oSID').attr({"value":originSID});
-    $('#editDialog').modal('show');
+    $('#sOID').attr({"value":originSID});
+    $('#studentEditDialog').modal('show');
+}
+function showStudentDeleteDialog(deleteSID) {
+    // set value the deleting student ID of the delete dialog
+    $('#sDID').attr({"value":deleteSID});
+    $('#studentDeleteDialog').modal('show');
 }
 
-function showDeleteDialog(deleteSID) {
-    // set value the deleting student ID of the delete dialog
-    $('#delSID').attr({"value":deleteSID});
-    $('#deleteDialog').modal('show');
+function showTeacherEditDialog(originTID) {
+    $('#tOID').attr({"value":originTID});
+    $('#teacherEditDialog').modal('show');
+}
+function showTeacherDeleteDialog(deleteTID) {
+    $('#tDID').attr({"value":deleteTID});
+    $('#teacherDeleteDialog').modal('show');
+}
+
+function showCourseEditDialog(originCID) {
+    $('#cOID').attr({"value":originCID});
+    $('#courseEditDialog').modal('show');
+}
+function showCourseDeleteDialog(deleteCID) {
+    $('#cDID').attr({"value":deleteCID});
+    $('#courseDeleteDialog').modal('show');
+}
+
+function showCciEditDialog(originSID, originCID, originTID, originChosenYear) {
+    $('#cciOSID').attr({"value":originSID});
+    $('#cciOCID').attr({"value":originCID});
+    $('#cciOTID').attr({"value":originTID});
+    $('#cciOChoYear').attr({"value":originChosenYear});
+    $('#cciEditDialog').modal('show');
 }

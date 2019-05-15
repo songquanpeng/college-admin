@@ -25,10 +25,10 @@
                 <td><%= course.grade %></td>
                 <td><%= course.canceledYear %></td>
                 <td class="modify">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="showEditDialog(<%= course.courseID %>)">EDIT</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showCourseEditDialog(<%= course.courseID %>)">EDIT</button>
                 </td>
                 <td class="modify">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteDialog(<%= course.courseID %>)">DELETE</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="showCourseDeleteDialog(<%= course.courseID %>)">DELETE</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-dark btn-sm">VIEW</button>

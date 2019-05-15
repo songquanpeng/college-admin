@@ -1,0 +1,54 @@
+<div class="modal fade" id="courseEditDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Course Information</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form>
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="cOID">Original Course ID:</label>
+                        <input type="text" class="form-control" id="cOID" name="cOID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cID">Course ID:</label>
+                        <input type="text" class="form-control" id="cID" name="cID" placeholder="Enter course ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="cName">Course Name:</label>
+                        <input type="text" class="form-control" id="cName" name="cName" placeholder="Enter course's name">
+                    </div>
+                    <div class="form-group">
+                        <label for="cTID">Teacher ID:</label>
+                        <input type="text" class="form-control" id="cTID" name="cTID" placeholder="Enter teacher's ID who teaches this course">
+                    </div>
+                    <div class="form-group">
+                        <label for="cCredit">Credit:</label>
+                        <input type="text" class="form-control" id="cCredit" name="cCredit" placeholder="Enter course's credit">
+                    </div>
+                    <div class="form-group">
+                        <label for="cGrade">Grade:</label>
+                        <input type="text" class="form-control" id="cGrade" name="cGrade" placeholder="Enter the grade in which student can choose this course">
+                    </div>
+                    <div class="form-group">
+                        <label for="cCanYear">Canceled Year:</label>
+                        <input type="text" class="form-control" id="cCanYear" name="cCanYear" placeholder="Enter canceled year">
+                    </div>
+
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
