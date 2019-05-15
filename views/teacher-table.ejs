@@ -21,10 +21,10 @@
                 <td><%= teacher.sex %></td>
                 <td><%= teacher.courses %></td>
                 <td class="modify">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="showEditDialog(<%= teacher.teacherID %>)">EDIT</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showTeacherEditDialog(<%= teacher.teacherID %>)">EDIT</button>
                 </td>
                 <td class="modify">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteDialog(<%= teacher.teacherID %>)">DELETE</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="showTeacherDeleteDialog(<%= teacher.teacherID %>)">DELETE</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-dark btn-sm">VIEW</button>

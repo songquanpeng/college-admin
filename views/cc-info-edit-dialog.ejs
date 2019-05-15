@@ -1,0 +1,61 @@
+<div class="modal fade" id="cciEditDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Student Information</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form>
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="cciOSID">Original Student ID:</label>
+                        <input type="text" class="form-control" id="cciOSID" name="cciOSID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciOCID">Original Course ID:</label>
+                        <input type="text" class="form-control" id="cciOCID" name="cciOCID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciOTID">Original Teacher ID:</label>
+                        <input type="text" class="form-control" id="cciOTID" name="cciOTID" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciOChoYear">Original Chosen Year:</label>
+                        <input type="text" class="form-control" id="cciOChoYear" name="cciOChoYear" value="No input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cciSID">Student ID:</label>
+                        <input type="text" class="form-control" id="cciSID" name="cciSID" placeholder="Enter new student ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="cciCID">Course ID:</label>
+                        <input type="text" class="form-control" id="cciCID" name="cciCID" placeholder="Enter new course ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="cciTID">Teacher ID:</label>
+                        <input type="text" class="form-control" id="cciTID" name="cciTID" placeholder="Enter new teacher ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="cciChoYear">Chosen Year:</label>
+                        <input type="text" class="form-control" id="cciChoYear" name="cciChoYear" placeholder="Enter new chosen year">
+                    </div>
+                    <div class="form-group">
+                        <label for="cciScore">Score:</label>
+                        <input type="text" class="form-control" id="cciScore" name="cciScore" placeholder="Enter the score of student in this course">
+                    </div>
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

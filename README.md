@@ -20,7 +20,7 @@
 + [x] about ->Song
 + [ ] index ->Song
 + [ ] insert ->Song
-+ [ ] statistic ->Lee
++ [x] statistic ->Lee
 + [x] message ->Song
 + [x] error ->Song
 + [x] 404 ->Song
@@ -32,18 +32,18 @@
 #### teacher
 + [x] teacher-table
 + [ ] teacher-detail
-+ [ ] teacher-edit-dialog
-+ [ ] teacher-delete-dialog
++ [x] teacher-edit-dialog
++ [x] teacher-delete-dialog
 #### course
 + [x] course-table
 + [ ] course-detail
-+ [ ] course-edit-dialog
-+ [ ] course-delete-dialog
++ [x] course-edit-dialog
++ [x] course-delete-dialog
 #### cc-info
 + [x] cc-info-table
 + [ ] cc-info-detail
-+ [ ] cc-info-edit-dialog
-+ [ ] cc-info-delete-dialog
++ [x] cc-info-edit-dialog
++ [x] cc-info-delete-dialog
 #### message
 + [ ] message-list
 + [ ] message-detail
