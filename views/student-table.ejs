@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <% if (students.length()){ %>
+    <% if (students.length){ %>
         <% students.forEach((student)=>{ %>
             <tr>
                 <td><%= student.studentID %></td>
@@ -39,4 +39,4 @@
         <% } %>
     </tbody>
 </table>
-<script>hideModifyBtn(<%= userType %>)</script>
+<script>hideModifyBtn("<%= userType %>")</script>

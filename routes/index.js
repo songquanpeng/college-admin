@@ -55,4 +55,21 @@ router.post('/login', function (req, res, next) {
     });
 });
 
+router.get('/query', function (req, res, next) {
+    const students = [{
+        "studentID":123456,
+        "name":"smz",
+        "sex":"male",
+        "entranceAge":18,
+        "entranceYear":2017,
+        "major":"gay science"
+    }];
+    res.render('query', {
+        students: students,
+        userType: "student",
+        info: req.flash('info'),
+        error: req.flash('error')
+    });
+});
+
 module.exports = router;
