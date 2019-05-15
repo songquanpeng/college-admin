@@ -30,11 +30,22 @@ class Data {
         }
     };
 
-    static updatePassword(id, userType, newPassword, callback) {
-        db.run('UPDATE ? SET password = ? WHERE ? = ?', userType, newPassword, userType+'ID', id, (error)=>{
-            callback(error);
-        });
-    };
+    static getDataByTypeAndID(dataType, id, callback){
+        if(dataType==="student"){
+            db.get('SELECT * FROM student WHERE studentID = ?',id, callback);
+        }else if(dataType==="admin"){
+            db.get('SELECT * FROM admin WHERE adminID = ?',id, callback);
+        }else if(dataType==="teacher"){
+            db.get('SELECT * FROM teacher WHERE teacherID = ?',id, callback);
+        }else if(dataType==="cc_info"){
+            db.get('SELECT * FROM teacher WHERE studentID = ? AND teacherID = ? AND courseID = ? AND chosenYear = ?',id, callback);
+        }else {
+            console.error("Unexpected data type: "+dataType);
+            callback(undefined, undefined);
+        }
+
+    }
+
 }
 
 module.exports.db = db;

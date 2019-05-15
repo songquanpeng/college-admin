@@ -26,7 +26,7 @@
 + [x] 404 ->Song
 #### student
 + [x] student-table  ->Lee
-+ [ ] student-detail ->Song
++ [x] student-detail ->Song
 + [x] student-edit-dialog -> Lee
 + [x] student-delete-dialog -> Lee
 #### teacher

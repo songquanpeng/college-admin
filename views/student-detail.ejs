@@ -6,20 +6,20 @@
         <h2>Details</h2>
         <div class="form-group">
             <label for="studentID">Student ID:</label>
-            <input type="text" class="form-control" id="studentID" name="studentID" readonly value="<%= student.studentID%>">
+            <input type="text" class="form-control" id="studentID" name="studentID" readonly value="<%= data.studentID%>">
         </div>
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="<%= student.name%>">
+            <input type="text" class="form-control" id="name" name="name" value="<%= data.name%>">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" value="<%= student.password%>">
+            <input type="password" class="form-control" id="password" name="password" value="<%= data.password%>">
         </div>
         <div class="form-group">
             <label for="sex">Sex:</label>
             <div data-toggle="buttons" id="sex">
-                <% if(student.sex==="Male"){%>
+                <% if(data.sex==="Male"){%>
                 <label class="btn btn-light">
                     <input type="radio" name="userType" value="Male" checked> Male
                 </label>
@@ -38,15 +38,15 @@
         </div>
         <div class="form-group">
             <label for="entranceAge">Entrance Age:</label>
-            <input type="number" class="form-control" id="entranceAge" name="entranceAge" min="0" max="200" step="1" value="<%= student.entranceAge%>">
+            <input type="number" class="form-control" id="entranceAge" name="entranceAge" min="0" max="200" step="1" value="<%= data.entranceAge%>">
         </div>
         <div class="form-group">
             <label for="entranceYear">Entrance Year:</label>
-            <input type="number" class="form-control" id="entranceYear" name="entranceYear" min="2000" max="2100" step="1" value="<%= student.entranceYear%>">
+            <input type="number" class="form-control" id="entranceYear" name="entranceYear" min="2000" max="2100" step="1" value="<%= data.entranceYear%>">
         </div>
         <div class="form-group">
             <label for="major">Major:</label>
-            <input type="text" class="form-control" id="major" name="major" value="<%= student.major%>">
+            <input type="text" class="form-control" id="major" name="major" value="<%= data.major%>">
         </div>
         <div class="w3-center">
             <button type="reset" class="btn btn-danger">Reset</button>

@@ -21,19 +21,13 @@ router.get('/user', function (req, res, next) {
     if (req.session.user === undefined) {
         res.render("login", {error: req.flash('error'), info: req.flash('info')});
     } else {
-        res.render("student-detail", {
-            student: {
-                studentID: "20173333",
-                name: "SMZ",
-                sex: "Female",
-                entranceAge: "18",
-                entranceYear: "2017",
-                major: "CS",
-                password: "233"
-            },
-            error: req.flash('error'),
-            info: req.flash('info')
-        })
+        Data.getDataByTypeAndID(req.session.user.userType, req.session.user.userID, (error, data)=>{
+            res.render(req.session.user.userType+"-detail", {
+                data: data,
+                error:  (error!==null) ? error.message : req.flash('error'),
+                info: req.flash('info')
+            })
+        });
     }
 });
 
