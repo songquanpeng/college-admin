@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/user").User;
+const Data = require("../models/Data").Data;
 
-/* GET home page. */
+//const record = require('../middlewares/record').record;
+
+
 router.get('/', function (req, res, next) {
     res.render('index', {
         info: "Welcome, dear user :)",
@@ -30,7 +32,7 @@ router.post('/login', function (req, res, next) {
     const password = req.body.password;
     const userType = req.body.userType;
 
-    User.checkCredential(userID, password, userType, (error, valid) => {
+    Data.checkCredential(userID, password, userType, (error, valid) => {
         if (error) {
             console.error(error.message);
             req.flash("error", "Server internal error, we are sorry for that.");

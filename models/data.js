@@ -1,17 +1,41 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('data.db');
 
-db.serialize(function () {
-    const createStudentTable = 'create table if not exists student(studentID varchar(10),name varchar(20),sex varchar(10),entranceAge smallint,entranceYear smallint,major varchar(50),password varchar(12),primary key(studentID));\n';
-    db.run(createStudentTable);
-    const createTeacherTable = 'create table if not exists teacher(teacherID varchar(10),name varchar(20),sex varchar(10),password varchar(12),primary key (teacherID));\n';
-    db.run(createTeacherTable);
-    const createCourseTable = 'create table if not exists course(courseID varchar(10),name varchar(20),teacherID varchar(10),credit numeric(3,1),grade smallint,canceledYear smallint,primary key (courseID),foreign key (teacherID) references teacher);\n';
-    db.run(createCourseTable);
-    const createCCInfoTable = 'create table if not exists cc_info(studentID varchar(10),courseID varchar(10),teacherID varchar(10),chosenYear smallint,score smallint,primary key (studentID, courseID, teacherID, chosenYear),foreign key (studentID) references student,foreign key (courseID) references course,foreign key (teacherID) references teacher);\n';
-    db.run(createCCInfoTable);
-    const createAdminTable = 'create table if not exists admin(adminID varchar(10),password varchar(12),name varchar(20),primary key (adminID));';
-    db.run(createAdminTable);
+class Data {
+    static checkCredential(id, password, userType, callback) {
+        function checkPassword(error, data) {
+            let valid = false;
+            if (error) {  // An error occurred while querying the database
+                console.error(error.message);
+            } else {
+                if (data === undefined) {  // No eligible query items
+                    valid = false;
+                } else {
+                    if (password === data.password) {
+                        valid = true;
+                    }
+                }
+            }
+            callback(error, valid);
+        }
+        if(userType==="student"){
+            db.get('SELECT password FROM student WHERE studentID = ?',id, checkPassword);
+        }else if(userType==="admin"){
+            db.get('SELECT password FROM admin WHERE adminID = ?',id, checkPassword);
+        }else if(userType==="teacher"){
+            db.get('SELECT password FROM teacher WHERE teacherID = ?',id, checkPassword);
+        }else {
+            console.error("Unexpected user type: "+userType);
+            callback(undefined, false);
+        }
+    };
 
-    console.log("Database initialization completed.");
-});
+    static updatePassword(id, userType, newPassword, callback) {
+        db.run('UPDATE ? SET password = ? WHERE ? = ?', userType, newPassword, userType+'ID', id, (error)=>{
+            callback(error);
+        });
+    };
+}
+
+module.exports.db = db;
+module.exports.Data = Data;

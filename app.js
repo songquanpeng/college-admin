@@ -10,7 +10,8 @@ const insertRouter = require('./routes/insert');
 const queryRouter = require('./routes/query');
 const updateRouter = require('./routes/update');
 
-require('./models/data');
+const record = require('./middlewares/record').record;
+require('./models/initialization');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(session({
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('*', record);
 app.use('/', indexRouter);
 app.use('/insert', insertRouter);
 app.use('/query', queryRouter);
