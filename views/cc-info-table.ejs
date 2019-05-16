@@ -14,7 +14,7 @@
     </tr>
     </thead>
     <tbody>
-    <% if (userData.length()){ %>
+    <% if (userData.length){ %>
         <% userData.forEach((CCI)=>{ %>
             <tr>
                 <td><%= CCI.studentID %></td>
@@ -37,4 +37,4 @@
     <% } %>
     </tbody>
 </table>
-<script>hideModifyBtn(<%= userType %>)</script>
+<script>hideModifyBtn("<%= userType %>")</script>

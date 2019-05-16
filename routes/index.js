@@ -22,6 +22,7 @@ router.get('/user', function (req, res, next) {
         res.render("login", {error: req.flash('error'), info: req.flash('info')});
     } else {
         Data.getDataByTypeAndID(req.session.user.userType, req.session.user.userID, (error, data)=>{
+            console.log(data);
             res.render(req.session.user.userType+"-detail", {
                 data: data,
                 error:  (error!==null) ? error.message : req.flash('error'),
@@ -56,39 +57,10 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/query', function (req, res, next) {
-    const students = [{ // test variable
-        "studentID":123456,
-        "name":"smz",
-        "sex":"male",
-        "entranceAge":18,
-        "entranceYear":2017,
-        "major":"gay science"
-    },{
-        "studentID":123456,
-        "name":"smz",
-        "sex":"male",
-        "entranceAge":18,
-        "entranceYear":2017,
-        "major":"gay science"
-    },{
-        "studentID":123456,
-        "name":"smz",
-        "sex":"male",
-        "entranceAge":18,
-        "entranceYear":2017,
-        "major":"gay science"
-    },{
-        "studentID":123456,
-        "name":"smz",
-        "sex":"male",
-        "entranceAge":18,
-        "entranceYear":2017,
-        "major":"gay science"
-    }];
     res.render('query', {
-        userType: "student",
-        queryType: "student",
-        userData: students,
+        userType: "",
+        queryType: "",
+        userData: undefined,
         info: req.flash('info'),
         error: req.flash('error')
     });

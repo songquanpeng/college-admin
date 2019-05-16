@@ -30,22 +30,54 @@ class Data {
         }
     };
 
-    static getDataByTypeAndID(dataType, id, callback){
-        if(dataType==="student"){
-            db.get('SELECT * FROM student WHERE studentID = ?',id, callback);
-        }else if(dataType==="admin"){
-            db.get('SELECT * FROM admin WHERE adminID = ?',id, callback);
-        }else if(dataType==="teacher"){
-            db.get('SELECT * FROM teacher WHERE teacherID = ?',id, callback);
-        }else if(dataType==="cc_info"){
-            db.get('SELECT * FROM teacher WHERE studentID = ? AND teacherID = ? AND courseID = ? AND chosenYear = ?',id, callback);
-        }else {
-            console.error("Unexpected data type: "+dataType);
+    static getDataByTypeAndID(dataType, id, callback) {
+        if (dataType === "student") {
+            db.get('SELECT * FROM student WHERE studentID = ?', id, callback);
+        } else if (dataType === "admin") {
+            db.get('SELECT * FROM admin WHERE adminID = ?', id, callback);
+        } else if (dataType === "teacher") {
+            db.get('SELECT * FROM teacher WHERE teacherID = ?', id, callback);
+        } else if (dataType === "cc_info") {
+            db.get('SELECT * FROM teacher WHERE studentID = ? AND teacherID = ? AND courseID = ? AND chosenYear = ?', id, callback);
+        } else {
+            console.error("Unexpected data type: " + dataType);
             callback(undefined, undefined);
         }
-
     }
 
+    static getDataByTypeAndObject(dataType, dataObject, callback){ //TODO: handle all types of data query
+        if (dataType === "student"){
+            let whereClause = 'WHERE';
+            if (dataObject.studentID !== ""){
+                whereClause += ' studentID = "' + dataObject.studentID + '" AND';
+            }
+            if (dataObject.name !== ""){
+                whereClause += ' name = "' + dataObject.name + '" AND';
+            }
+            if (dataObject.sex !== ""){
+                whereClause += ' sex = "' + dataObject.sex + '" AND';
+            }
+            if (dataObject.entranceAge !== ""){
+                whereClause += ' entranceAge = "' + dataObject.entranceAge + '" AND';
+            }
+            if (dataObject.entranceYear !== ""){
+                whereClause += ' entranceYear = "' + dataObject.entranceYear + '" AND';
+            }
+            if (dataObject.major !== ""){
+                whereClause += ' major = "' + dataObject.major + '" AND';
+            }
+            if (whereClause === 'WHERE'){
+                db.all('SELECT * FROM student', callback);
+            } else {
+                whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
+                console.log("WHERE Clause: " + whereClause);
+                db.all('SELECT * FROM student ' + whereClause, callback);
+            }
+        } else {
+            console.error("Unexpected data type: " + dataType);
+            callback(undefined, undefined);
+        }
+    }
 }
 
 module.exports.db = db;

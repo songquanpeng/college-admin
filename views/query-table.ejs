@@ -1,22 +1,22 @@
 <div class="container" style="margin-bottom: 20px">
     <h2>Query options</h2>
     <p>Set the options below, then you can query records.</p>
-    <form>
+    <form action="/query" method="post"> <!-- https://httpbin.org/post -->
         <div class="btn-group" data-toggle="buttons" id="qRadioGroup">
             <label  class="btn btn-light">
-                <input  type="radio" name="queryType" value="qStudent"> Student
+                <input  type="radio" name="queryType" value="student"> Student
             </label>
             <label  class="btn btn-light">
-                <input  type="radio" name="queryType" value="qTeacher"> Teacher
+                <input  type="radio" name="queryType" value="teacher"> Teacher
             </label>
             <label  class="btn btn-light">
-                <input  type="radio" name="queryType" value="qCourse"> Course
+                <input  type="radio" name="queryType" value="course"> Course
             </label>
             <label  class="btn btn-light">
-                <input  type="radio" name="queryType" value="qCCInfo"> Course Choosing
+                <input  type="radio" name="queryType" value="cc-info"> Course Choosing
             </label>
             <label  class="btn btn-light">
-                <input  type="radio" name="queryType" value="qStatistic"> Statistic
+                <input  type="radio" name="queryType" value="statistic"> Statistic
             </label>
         </div>
         <div id="qStudentTable" style="display:none">
@@ -37,9 +37,9 @@
                     <td><input type="text" class="form-control" name="sID" placeholder="student ID"></td>
                     <td><input type="text" class="form-control" name="sName" placeholder="student's name"></td>
                     <td><input type="text" class="form-control" name="sSex" placeholder="student's sex"></td>
-                    <td><input type="text" class="form-control" name="enAge" placeholder="entrance age"></td>
-                    <td><input type="text" class="form-control" name="enYear" placeholder="entrance year"></td>
-                    <td><input type="text" class="form-control" name="maj" placeholder="major"></td>
+                    <td><input type="text" class="form-control" name="sEnAge" placeholder="entrance age"></td>
+                    <td><input type="text" class="form-control" name="sEnYear" placeholder="entrance year"></td>
+                    <td><input type="text" class="form-control" name="sMajor" placeholder="major"></td>
                     <td><button type="submit" class="btn btn-primary">Query</button></td>
                 </tr>
                 </tbody>
@@ -85,9 +85,9 @@
                     <td><input type="text" class="form-control" name="cID" placeholder="course ID"></td>
                     <td><input type="text" class="form-control" name="cName" placeholder="course's name"></td>
                     <td><input type="text" class="form-control" name="cTID" placeholder="teacher's ID"></td>
-                    <td><input type="text" class="form-control" name="credit" placeholder="credit"></td>
-                    <td><input type="text" class="form-control" name="grade" placeholder="grade"></td>
-                    <td><input type="text" class="form-control" name="canYear" placeholder="canceled year"></td>
+                    <td><input type="text" class="form-control" name="cCredit" placeholder="credit"></td>
+                    <td><input type="text" class="form-control" name="cGrade" placeholder="grade"></td>
+                    <td><input type="text" class="form-control" name="cCanYear" placeholder="canceled year"></td>
                     <td><button type="submit" class="btn btn-primary">Query</button></td>
                 </tr>
                 </tbody>
@@ -107,11 +107,11 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" class="form-control" name="CCISID" placeholder="student ID"></td>
-                    <td><input type="text" class="form-control" name="CCICID" placeholder="course ID"></td>
-                    <td><input type="text" class="form-control" name="CCITID" placeholder="teacher ID"></td>
-                    <td><input type="text" class="form-control" name="chosenYear" placeholder="chosen year"></td>
-                    <td><input type="text" class="form-control" name="score" placeholder="score"></td>
+                    <td><input type="text" class="form-control" name="cciSID" placeholder="student ID"></td>
+                    <td><input type="text" class="form-control" name="cciCID" placeholder="course ID"></td>
+                    <td><input type="text" class="form-control" name="cciTID" placeholder="teacher ID"></td>
+                    <td><input type="text" class="form-control" name="cciChoYear" placeholder="chosen year"></td>
+                    <td><input type="text" class="form-control" name="cciScore" placeholder="score"></td>
                     <td><button type="submit" class="btn btn-primary">Query</button></td>
                 </tr>
                 </tbody>
@@ -131,7 +131,7 @@
                 <tr>
                     <td><input type="text" class="form-control" name="staSID" placeholder="student ID"></td>
                     <td><input type="text" class="form-control" name="staCID" placeholder="course ID"></td>
-                    <td><input type="text" class="form-control" name="staMaj" placeholder="major"></td>
+                    <td><input type="text" class="form-control" name="staMajor" placeholder="major"></td>
                     <td><button type="submit" class="btn btn-primary">Query</button></td>
                 </tr>
                 </tbody>
@@ -158,32 +158,32 @@
         $("#qRadioGroup").click(function () {
             setTimeout(function () {
                 const queryType = $("input[name='queryType']:checked").val();
-                console.log(queryType);
-                if (queryType ==="qStudent") {
+                //console.log(queryType);
+                if (queryType ==="student") {
                     studentTable.show();
                     teacherTable.hide();
                     courseTable.hide();
                     CCITable.hide();
                     statisticTable.hide();
-                } else if (queryType ==="qTeacher"){
+                } else if (queryType ==="teacher"){
                     studentTable.hide();
                     teacherTable.show();
                     courseTable.hide();
                     CCITable.hide();
                     statisticTable.hide();
-                } else if (queryType ==="qCourse"){
+                } else if (queryType ==="course"){
                     studentTable.hide();
                     teacherTable.hide();
                     courseTable.show();
                     CCITable.hide();
                     statisticTable.hide();
-                } else if (queryType ==="qCCInfo"){
+                } else if (queryType ==="cc-info"){
                     studentTable.hide();
                     teacherTable.hide();
                     courseTable.hide();
                     CCITable.show();
                     statisticTable.hide();
-                } else if (queryType ==="qStatistic"){
+                } else if (queryType ==="statistic"){
                     studentTable.hide();
                     teacherTable.hide();
                     courseTable.hide();
