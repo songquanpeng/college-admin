@@ -2,8 +2,24 @@
 <%- include('navigation-bar') %>
 <%- include('query-table') %>
 <div class="container" style="margin-bottom: 20px">
-    <%- include('student-table') %>
-    <%- include('student-edit-dialog') %>
-    <%- include('student-delete-dialog') %>
+    <% if (queryType === "student"){ %>
+        <%- include('student-table') %>
+        <%- include('student-edit-dialog') %>
+        <%- include('student-delete-dialog') %>
+    <% } else if (queryType === "teacher") { %>
+        <%- include('teacher-table') %>
+        <%- include('teacher-edit-dialog') %>
+        <%- include('teacher-delete-dialog') %>
+    <% } else if (queryType === "course") { %>
+        <%- include('course-table') %>
+        <%- include('course-edit-dialog') %>
+        <%- include('course-delete-dialog') %>
+    <% } else if (queryType === "cc-info") { %>
+        <%- include('cc-info-table') %>
+        <%- include('cc-info-edit-dialog') %>
+        <%- include('cc-info-delete-dialog') %>
+    <% } else if (queryType === "statistic") { %>
+        <%- include('statistic') %>
+    <% } %>
 </div>
 <%- include('footer')%>

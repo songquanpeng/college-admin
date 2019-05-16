@@ -14,8 +14,8 @@
     </tr>
     </thead>
     <tbody>
-    <% if (CCIs.length()){ %>
-        <% CCIs.forEach((CCI)=>{ %>
+    <% if (userData.length()){ %>
+        <% userData.forEach((CCI)=>{ %>
             <tr>
                 <td><%= CCI.studentID %></td>
                 <td><%= CCI.courseID %></td>
@@ -29,7 +29,7 @@
                     <button type="button" class="btn btn-danger btn-sm" onclick="showCciDeleteDialog(<%= CCI.studentID, CCI.courseID, CCI.teacherID, CCI.chosenYear %>)">DELETE</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-dark btn-sm">VIEW</button>
+                    <button type="button" class="btn btn-primary btn-sm">VIEW</button>
                 </td>
             </tr>
     <% })}else{ %>

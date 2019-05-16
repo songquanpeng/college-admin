@@ -15,8 +15,8 @@
     </tr>
     </thead>
     <tbody>
-    <% if (courses.length()){ %>
-        <% courses.forEach((course)=>{ %>
+    <% if (userData.length()){ %>
+        <% userData.forEach((course)=>{ %>
             <tr>
                 <td><%= course.courseID %></td>
                 <td><%= course.name %></td>
@@ -31,7 +31,7 @@
                     <button type="button" class="btn btn-danger btn-sm" onclick="showCourseDeleteDialog(<%= course.courseID %>)">DELETE</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-dark btn-sm">VIEW</button>
+                    <button type="button" class="btn btn-primary btn-sm">VIEW</button>
                 </td>
             </tr>
     <% })}else{ %>

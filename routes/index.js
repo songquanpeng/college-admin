@@ -56,7 +56,28 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/query', function (req, res, next) {
-    const students = [{
+    const students = [{ // test variable
+        "studentID":123456,
+        "name":"smz",
+        "sex":"male",
+        "entranceAge":18,
+        "entranceYear":2017,
+        "major":"gay science"
+    },{
+        "studentID":123456,
+        "name":"smz",
+        "sex":"male",
+        "entranceAge":18,
+        "entranceYear":2017,
+        "major":"gay science"
+    },{
+        "studentID":123456,
+        "name":"smz",
+        "sex":"male",
+        "entranceAge":18,
+        "entranceYear":2017,
+        "major":"gay science"
+    },{
         "studentID":123456,
         "name":"smz",
         "sex":"male",
@@ -65,8 +86,9 @@ router.get('/query', function (req, res, next) {
         "major":"gay science"
     }];
     res.render('query', {
-        students: students,
         userType: "student",
+        queryType: "student",
+        userData: students,
         info: req.flash('info'),
         error: req.flash('error')
     });

@@ -15,8 +15,8 @@
     </tr>
     </thead>
     <tbody>
-    <% if (students.length){ %>
-        <% students.forEach((student)=>{ %>
+    <% if (userData.length){ %>
+        <% userData.forEach((student)=>{ %>
             <tr>
                 <td><%= student.studentID %></td>
                 <td><%= student.name %></td>
@@ -31,7 +31,7 @@
                     <button type="button" class="btn btn-danger btn-sm" onclick="showStudentDeleteDialog(<%= student.studentID %>)">DELETE</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-dark btn-sm">VIEW</button>
+                    <button type="button" class="btn btn-primary btn-sm">VIEW</button>
                 </td>
             </tr>
         <% })}else{ %>
