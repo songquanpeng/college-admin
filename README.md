@@ -132,6 +132,11 @@ statistics/students {
         courseID
     }
 }->Lee
+
+detail {
+    type: student/teacher/admin/course/cc-info,
+    id:id/id:{studentID,courseID,teacherID,chosenYear}
+}->Song
 ```
 ### DELETE
 ```

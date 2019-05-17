@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Data = require("../models/Data").Data;
+const isAdmin = require("../middlewares/check").isAdmin;
 
 
 router.get('/', function (req, res, next) {
@@ -21,11 +22,11 @@ router.get('/user', function (req, res, next) {
     if (req.session.user === undefined) {
         res.render("login", {error: req.flash('error'), info: req.flash('info')});
     } else {
-        Data.getDataByTypeAndID(req.session.user.userType, req.session.user.userID, (error, data)=>{
+        Data.getDataByTypeAndID(req.session.user.userType, req.session.user.userID, (error, data) => {
             console.log(data);
-            res.render(req.session.user.userType+"-detail", {
+            res.render(req.session.user.userType + "-detail", {
                 data: data,
-                error:  (error!==null) ? error.message : req.flash('error'),
+                error: (error !== null) ? error.message : req.flash('error'),
                 info: req.flash('info')
             })
         });
@@ -63,6 +64,18 @@ router.get('/query', function (req, res, next) {
         userData: undefined,
         info: req.flash('info'),
         error: req.flash('error')
+    });
+});
+
+
+router.post('/detail', isAdmin, function (req, res, next) {
+    Data.getDataByTypeAndID(req.body.type, req.body.id, (error, data) => {
+        console.log(data);
+        res.render(req.body.type + "-detail", {
+            data: data,
+            error: (error !== null) ? error.message : req.flash('error'),
+            info: req.flash('info')
+        })
     });
 });
 
