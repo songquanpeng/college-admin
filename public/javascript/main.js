@@ -43,6 +43,7 @@ function showCciEditDialog(originSID, originCID, originTID, originChosenYear) {
     $('#cciOChoYear').attr({"value":originChosenYear});
     $('#cciEditDialog').modal('show');
 }
+
 function showCciDeleteDialog(deleteSID, deleteCID, deleteTID, deleteChosenYear) {
     $('#cciDelSID').attr({"value":deleteSID});
     $('#cciDelCID').attr({"value":deleteCID});
