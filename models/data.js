@@ -45,7 +45,7 @@ class Data {
         }
     }
 
-    static getDataByTypeAndObject(dataType, dataObject, callback){ //TODO: handle all types of data query
+    static getDataByTypeAndObject(dataType, dataObject, callback){ //this method is deprecated.
         if (dataType === "student"){
             let whereClause = 'WHERE';
             if (dataObject.studentID !== ""){
@@ -75,6 +75,122 @@ class Data {
             }
         } else {
             console.error("Unexpected data type: " + dataType);
+            callback(undefined, undefined);
+        }
+    }
+
+    static getDataByReqBody(body, callback){
+        let whereClause = 'WHERE';
+        // constructing SQL where-clause by checking query type
+        if (body.queryType === "student"){
+            if (body.sID !== ""){
+                whereClause += ' studentID = "' + body.sID + '" AND';
+            }
+            if (body.sName !== ""){
+                whereClause += ' name = "' + body.sName + '" AND';
+            }
+            if (body.sSex !== ""){
+                whereClause += ' sex = "' + body.sSex + '" AND';
+            }
+            if (body.sEnAge !== ""){
+                whereClause += ' entranceAge = "' + body.sEnAge + '" AND';
+            }
+            if (body.sEnYear !== ""){
+                whereClause += ' entranceYear = "' + body.sEnYear + '" AND';
+            }
+            if (body.sMajor !== ""){
+                whereClause += ' major = "' + body.sMajor + '" AND';
+            }
+            if (whereClause === 'WHERE'){
+                db.all('SELECT * FROM student', callback);
+            } else {
+                whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
+                console.log("WHERE Clause: " + whereClause);
+                db.all('SELECT * FROM student ' + whereClause, callback);
+            }
+        } else if (body.queryType === "teacher"){
+            if (body.tID !== ""){
+                whereClause += ' teacher.teacherID = "' + body.tID + '" AND';
+            }
+            if (body.tName !== ""){
+                whereClause += ' teacher.name = "' + body.tName + '" AND';
+            }
+            if (body.tSex !== ""){
+                whereClause += ' teacher.sex = "' + body.tSex + '" AND';
+            }
+            if (body.tCourse !== ""){
+                whereClause += ' course.name = "' + body.tCourse + '" AND';
+            }
+            if (whereClause === 'WHERE'){
+                db.all('SELECT teacher.*, course.name AS cName FROM teacher, course WHERE teacher.teacherID = course.teacherID', callback);
+            } else {
+                //whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
+                whereClause += ' teacher.teacherID = course.teacherID';
+                console.log("WHERE Clause: " + whereClause);
+                db.all('SELECT teacher.*, course.name as cName FROM teacher, course ' + whereClause, callback);
+            }
+        } else if (body.queryType === "course"){
+            if (body.cID !== ""){
+                whereClause += ' courseID = "' + body.cID + '" AND';
+            }
+            if (body.cName !== ""){
+                whereClause += ' name = "' + body.cName + '" AND';
+            }
+            if (body.cTID !== ""){
+                whereClause += ' teacherID = "' + body.cTID + '" AND';
+            }
+            if (body.cCredit !== ""){
+                whereClause += ' credit = "' + body.cCredit + '" AND';
+            }
+            if (body.cGrade !== ""){
+                whereClause += ' grade = "' + body.cGrade + '" AND';
+            }
+            if (body.cCanYear !== ""){
+                whereClause += ' canceledYear = "' + body.cCanYear + '" AND';
+            }
+            if (whereClause === 'WHERE'){
+                db.all('SELECT * FROM course', callback);
+            } else {
+                whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
+                console.log("WHERE Clause: " + whereClause);
+                db.all('SELECT * FROM course ' + whereClause, callback);
+            }
+        } else if (body.queryType === "cc-info"){
+            if (body.cciSID !== ""){
+                whereClause += ' studentID = "' + body.cciSID + '" AND';
+            }
+            if (body.cciCID !== ""){
+                whereClause += ' courseID = "' + body.cciCID + '" AND';
+            }
+            if (body.cciTID !== ""){
+                whereClause += ' teacherID = "' + body.cciTID + '" AND';
+            }
+            if (body.cciChoYear !== ""){
+                whereClause += ' chosenYear = "' + body.cciChoYear + '" AND';
+            }
+            if (body.cciScore !== ""){
+                whereClause += ' score = "' + body.cciScore + '" AND';
+            }
+            if (whereClause === 'WHERE'){
+                db.all('SELECT * FROM cc_info', callback);
+            } else {
+                whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
+                console.log("WHERE Clause: " + whereClause);
+                db.all('SELECT * FROM cc_info ' + whereClause, callback);
+            }
+        } else if (body.queryType === "statistic"){
+            if (body.staSID !== ""){
+                db.get('SELECT avg(score) AS avgScore FROM cc_info WHERE studentID = "' + body.staSID + '"', callback);
+            } else if (body.staCID !== ""){
+                db.get('SELECT avg(score) AS avgScore FROM cc_info WHERE courseID = "' + body.staCID + '"', callback);
+            } else if (body.staMajor !== ""){
+                db.get('SELECT avg(cc_info.score) AS avgScore FROM cc_info, student WHERE student.studentID = cc_info.studentID ' +
+                    'AND student.major = "' + body.staMajor + '"', callback);
+            } else {
+                db.get('SELECT avg(score) AS avgScore FROM cc_info', callback);
+            }
+        } else {
+            console.error("Unexpected data type: " + body.dataType);
             callback(undefined, undefined);
         }
     }
