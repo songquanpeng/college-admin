@@ -33,6 +33,11 @@ router.get('/user', function (req, res, next) {
     }
 });
 
+router.get('/logout', function (req, res, next) {
+    req.session.user = undefined;
+    res.render("login", {error: req.flash('error'), info: req.flash('info')});
+});
+
 router.post('/login', function (req, res, next) {
     const userID = req.body.userID;
     const password = req.body.password;
