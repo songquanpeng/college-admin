@@ -24,7 +24,8 @@
         </button>
     </div>
     <div>
-        <form style="display:none" id="insert-student-form" action="/insert/student" method="post">
+        <form style="display:none" id="insert-student-form" action="http://httpbin.org/post" method="post">
+            <input type="text" name="type" value="student" style="display: none">
             <table class="table table-sm">
                 <thead>
                 <tr>

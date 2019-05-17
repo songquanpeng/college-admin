@@ -12,7 +12,8 @@
     <br>
     <br>
     <div>
-        <form style="display:none" id="insert-student-form" action="/insert/student" method="post">
+        <form style="display:none" id="insert-student-form" action="/insert" method="post">
+            <input type="text" name="type" value="student" style="display: none">
             <table class="table table-sm">
                 <thead>
                 <tr>
@@ -57,7 +58,8 @@
                 </tbody>
             </table>
         </form>
-        <form style="display:none" id="insert-teacher-form" action="/insert/teacher" method="post">
+        <form style="display:none" id="insert-teacher-form" action="/insert" method="post">
+            <input type="text" name="type" value="teacher" style="display: none">
             <table class="table table-sm">
                 <thead>
                 <tr>
@@ -70,7 +72,7 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" name="studentID" required>
+                        <input type="text" class="form-control" name="teacherID" required>
                     </td>
                     <td>
                         <input type="text" class="form-control" name="name" required>
@@ -88,7 +90,8 @@
                 </tbody>
             </table>
         </form>
-        <form style="display:none" id="insert-course-form" action="/insert/course" method="post">
+        <form style="display:none" id="insert-course-form" action="/insert" method="post">
+            <input type="text" name="type" value="course" style="display: none">
             <table class="table table-sm">
                 <thead>
                 <tr>
@@ -131,7 +134,8 @@
                 </tbody>
             </table>
         </form>
-        <form style="display:none" id="insert-cc-info-form" action="/insert/cc-info" method="post">
+        <form style="display:none" id="insert-cc-info-form" action="/insert" method="post">
+            <input type="text" name="type" value="cc-info" style="display: none">
             <table class="table table-sm">
                 <thead>
                 <tr>

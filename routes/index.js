@@ -67,7 +67,6 @@ router.get('/query', function (req, res, next) {
     });
 });
 
-
 router.post('/detail', isAdmin, function (req, res, next) {
     Data.getDataByTypeAndID(req.body.type, req.body.id, (error, data) => {
         console.log(data);
@@ -75,7 +74,26 @@ router.post('/detail', isAdmin, function (req, res, next) {
             data: data,
             error: (error !== null) ? error.message : req.flash('error'),
             info: req.flash('info')
-        })
+        });
+    });
+});
+
+router.post('/insert',isAdmin,function (req, res, next) {
+    Data.insertNewData(req.body.type, req.body, (error)=>{
+        if(error){
+            req.flash('error', error.message);
+        }else {
+            req.flash('info', "Insert successfully.")
+        }
+        res.render('query', {
+            userType: "",
+            queryType: "",
+            userData: undefined,
+            // info: (error !== null) ? req.flash('info') : "Insert successfully.",
+            // error: (error !== null) ? error.message : req.flash('error'),
+            info : req.flash('info'),
+            error : req.flash('error')
+        });
     });
 });
 
