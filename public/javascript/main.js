@@ -50,3 +50,11 @@ function showCciDeleteDialog(deleteSID, deleteCID, deleteTID, deleteChosenYear) 
     $('#cciDelChoYear').attr({"value":deleteChosenYear});
     $('#cciDeleteDialog').modal('show');
 }
+
+function controlInsertForm(id) {
+    $("#insert-student-form").css("display","none");
+    $("#insert-teacher-form").css("display","none");
+    $("#insert-course-form").css("display","none");
+    $("#insert-cc-info-form").css("display","none");
+    $("#"+id).css("display","block");
+}

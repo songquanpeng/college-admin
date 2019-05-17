@@ -1,0 +1,170 @@
+<div class="container">
+    <h2>Insert options</h2>
+    <div class="btn-group">
+        <button type="button" class="btn btn-light" onclick="controlInsertForm('insert-student-form')">Student</button>
+        <button type="button" class="btn btn-light" onclick="controlInsertForm('insert-teacher-form')">Teacher</button>
+        <button type="button" class="btn btn-light" onclick="controlInsertForm('insert-course-form')">Course</button>
+        <button type="button" class="btn btn-light" onclick="controlInsertForm('insert-cc-info-form')">Course Choosing
+            Information
+        </button>
+    </div>
+    <div>
+        <form style="display:none" id="insert-student-form" action="/insert/student" method="post">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Entrance Age</th>
+                    <th>Entrance Year</th>
+                    <th>Major</th>
+                    <th>Insert</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" name="studentID" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="name" required>
+                    </td>
+                    <td>
+                        <select class="form-control" name="sex" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="entranceAge" min="0" max="200" step="1"
+                               required>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="entranceYear" min="2000" max="2100" step="1"
+                               required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="major" required>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <form style="display:none" id="insert-teacher-form" action="/insert/teacher" method="post">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Teacher ID</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Insert</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" name="studentID" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="name" required>
+                    </td>
+                    <td>
+                        <select class="form-control" name="sex" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <form style="display:none" id="insert-course-form" action="/insert/course" method="post">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Name</th>
+                    <th>Teacher ID</th>
+                    <th>Credit</th>
+                    <th>Grade</th>
+                    <th>Canceled Year</th>
+                    <th>Insert</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" name="courseID" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="name" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="teacherID" required>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="credit" min="0" max="10" step="0.1"
+                               required>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="grade" min="1" max="10" step="1"
+                               required>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="canceledYear" min="2000" max="2100" step="1"
+                               required>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <form style="display:none" id="insert-cc-info-form" action="/insert/cc-info" method="post">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Course ID</th>
+                    <th>Teacher ID</th>
+                    <th>Chosen Year</th>
+                    <th>Score</th>
+                    <th>Insert</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" name="studentID" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="courseID" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="teacherID" required>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="chosenYear" min="2000" max="2100" step="1"
+                               required>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="credit" min="0" max="300" step="0.1"
+                               required>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
