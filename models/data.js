@@ -32,10 +32,12 @@ class Data {
     }
 
     static insertNewData(dataType, data, callback){
-        console.log(data);
+        //console.log(data);
         if (dataType === "student") {
             db.run('INSERT INTO student (studentID, name, sex, entranceAge, entranceYear, major, password) VALUES (?, ?, ?, ?, ?, ?, ?)', data.studentID, data.name, data.sex, data.entranceAge, data.entranceYear, data.major, '123456', callback);
-        } else if (dataType === "admin") {
+        }else if (dataType === "course") {
+            db.run('INSERT INTO course (courseID, name, teacherID, credit, grade, canceledYear) VALUES (?, ?, ?, ?, ?, ?)', data.courseID, data.name, data.teacherID, data.credit, data.grade, data.canceledYear, callback);
+        }else if (dataType === "admin") {
             db.run('INSERT INTO admin (adminID, password, name) VALUES (?, ?, ?)', data.adminID, '123456', data.name, callback);
         } else if (dataType === "teacher") {
             db.run('INSERT INTO teacher (teacherID, name, sex, password) VALUES (?, ?, ?, ?)', data.teacherID, data.name, data.sex, '123456', callback);
@@ -43,7 +45,7 @@ class Data {
             db.run('INSERT INTO student (studentID, courseID, teacherID, chosenYear, score) VALUES (?, ?, ?, ?, ?)', data.studentID, data.courseID, data.teacherID, data.chosenYear, data.score, callback);
         } else {
             console.error("Unexpected data type: " + dataType);
-            callback(undefined, undefined);
+            callback(new Error("Unexpected data type: " + dataType), undefined);
         }
     }
 

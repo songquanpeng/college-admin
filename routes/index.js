@@ -89,8 +89,6 @@ router.post('/insert',isAdmin,function (req, res, next) {
             userType: "",
             queryType: "",
             userData: undefined,
-            // info: (error !== null) ? req.flash('info') : "Insert successfully.",
-            // error: (error !== null) ? error.message : req.flash('error'),
             info : req.flash('info'),
             error : req.flash('error')
         });
