@@ -30,6 +30,10 @@ app.use(session({
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('*', (req, res, next)=>{
+    res.locals.logged = req.session.user !== undefined;
+    next();
+});
 app.use('*', record);
 app.use('/', indexRouter);
 app.use('/query', queryRouter);

@@ -2,7 +2,11 @@
     <ul>
         <li><a href="/" class="w3-red">Home</a></li>
         <li><a href="/query">Query</a></li>
-        <li><a href="/user">User</a></li>
+        <% if(logged) {%>
+        <li><a href="/logout">Logout</a></li>
+        <% } else { %>
+        <li><a href="/user">Login</a></li>
+        <% } %>
         <li><a href="/about">About</a></li>
     </ul>
 </div>
