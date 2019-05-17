@@ -19,7 +19,7 @@
 + [x] query ->Lee
 + [x] about ->Song
 + [ ] index ->Song
-+ [ ] insert ->Song
++ [x] insert ->Song
 + [x] statistic ->Lee
 + [x] message ->Song
 + [x] error ->Song
@@ -31,17 +31,17 @@
 + [x] student-delete-dialog -> Lee
 #### teacher
 + [x] teacher-table
-+ [ ] teacher-detail
++ [x] teacher-detail
 + [x] teacher-edit-dialog
 + [x] teacher-delete-dialog
 #### course
 + [x] course-table
-+ [ ] course-detail
++ [x] course-detail
 + [x] course-edit-dialog
 + [x] course-delete-dialog
 #### cc-info
 + [x] cc-info-table
-+ [ ] cc-info-detail
++ [x] cc-info-detail
 + [x] cc-info-edit-dialog
 + [x] cc-info-delete-dialog
 #### message
