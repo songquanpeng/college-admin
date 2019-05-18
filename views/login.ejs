@@ -6,6 +6,12 @@
         <div>
             <h2>Provide credentials</h2>
         </div>
+        <input id="referrer" type="text" name="referrer" class="form-control" style="display:none;">
+        <script>
+            $(document).ready(()=> {
+                $('#referrer').val(document.referrer);
+            });
+        </script>
         <div class="form-group">
             <label for="userID">User ID:</label>
             <input type="text" class="form-control" id="userID" name="userID" placeholder="Enter user ID" required>

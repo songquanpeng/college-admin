@@ -23,7 +23,7 @@ router.get('/user', function (req, res, next) {
         res.render("login", {error: req.flash('error'), info: req.flash('info')});
     } else {
         Data.getDataByTypeAndID(req.session.user.userType, req.session.user.userID, (error, data) => {
-            console.log(data);
+            //console.log(data);
             res.render(req.session.user.userType + "-detail", {
                 data: data,
                 error: (error !== null) ? error.message : req.flash('error'),
@@ -58,7 +58,8 @@ router.post('/login', function (req, res, next) {
                 req.flash("error", "Invalid credentials, please try again!");
             }
         }
-        res.redirect('/user');
+        const backURL = req.body.referrer || '/';
+        res.redirect(backURL);
     });
 });
 
@@ -74,7 +75,7 @@ router.get('/query', function (req, res, next) {
 
 router.post('/detail', isAdmin, function (req, res, next) {
     Data.getDataByTypeAndID(req.body.type, req.body.id, (error, data) => {
-        console.log(data);
+        //console.log(data);
         res.render(req.body.type + "-detail", {
             data: data,
             error: (error !== null) ? error.message : req.flash('error'),
