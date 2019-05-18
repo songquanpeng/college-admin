@@ -64,40 +64,6 @@ class Data {
         }
     }
 
-    static getDataByTypeAndObject(dataType, dataObject, callback) { //this method is deprecated.
-        if (dataType === "student") {
-            let whereClause = 'WHERE';
-            if (dataObject.studentID !== "") {
-                whereClause += ' studentID = "' + dataObject.studentID + '" AND';
-            }
-            if (dataObject.name !== "") {
-                whereClause += ' name = "' + dataObject.name + '" AND';
-            }
-            if (dataObject.sex !== "") {
-                whereClause += ' sex = "' + dataObject.sex + '" AND';
-            }
-            if (dataObject.entranceAge !== "") {
-                whereClause += ' entranceAge = "' + dataObject.entranceAge + '" AND';
-            }
-            if (dataObject.entranceYear !== "") {
-                whereClause += ' entranceYear = "' + dataObject.entranceYear + '" AND';
-            }
-            if (dataObject.major !== "") {
-                whereClause += ' major = "' + dataObject.major + '" AND';
-            }
-            if (whereClause === 'WHERE') {
-                db.all('SELECT * FROM student', callback);
-            } else {
-                whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
-                console.log("WHERE Clause: " + whereClause);
-                db.all('SELECT * FROM student ' + whereClause, callback);
-            }
-        } else {
-            console.error("Unexpected data type: " + dataType);
-            callback(undefined, undefined);
-        }
-    }
-
     static getDataByReqBody(body, callback) {
         let whereClause = 'WHERE';
         // constructing SQL where-clause by checking query type

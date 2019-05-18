@@ -9,7 +9,7 @@
         <th>Chosen Year</th>
         <th>Score</th>
         <th class="modify">Edit</th>
-        <th class="modify">Delete</th>
+        <th class="modify delete">Delete</th>
         <th>Detail</th>
     </tr>
     </thead>
@@ -25,7 +25,7 @@
                 <td class="modify">
                     <button type="button" class="btn btn-primary btn-sm" onclick="showCciEditDialog(<%= CCI.studentID +','+ CCI.courseID +','+ CCI.teacherID +','+ CCI.chosenYear %>)">EDIT</button>
                 </td>
-                <td class="modify">
+                <td class="modify delete">
                     <button type="button" class="btn btn-danger btn-sm" onclick="showCciDeleteDialog(<%= CCI.studentID +','+ CCI.courseID +','+ CCI.teacherID +','+ CCI.chosenYear %>)">DELETE</button>
                 </td>
                 <td>

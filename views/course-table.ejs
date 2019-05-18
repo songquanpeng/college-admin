@@ -10,7 +10,7 @@
         <th>Grade</th>
         <th>Canceled Year</th>
         <th class="modify">Edit</th>
-        <th class="modify">Delete</th>
+        <th class="modify delete">Delete</th>
         <th>Detail</th>
     </tr>
     </thead>
@@ -27,7 +27,7 @@
                 <td class="modify">
                     <button type="button" class="btn btn-primary btn-sm" onclick="showCourseEditDialog(<%= course.courseID %>)">EDIT</button>
                 </td>
-                <td class="modify">
+                <td class="modify delete">
                     <button type="button" class="btn btn-danger btn-sm" onclick="showCourseDeleteDialog(<%= course.courseID %>)">DELETE</button>
                 </td>
                 <td>

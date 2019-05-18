@@ -4,6 +4,11 @@ function hideModifyBtn(userType) {
         for (let i=0; i<elements.length; i++){
             elements[i].hidden = true;
         }
+    } else if (userType === "teacher"){
+        let elements = document.getElementsByClassName("delete");
+        for (let i=0; i<elements.length; i++){
+            elements[i].hidden = true;
+        }
     }
 }
 
