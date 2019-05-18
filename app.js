@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const flash = require('connect-flash');
+const serveStatic = require('serve-static');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -28,7 +29,10 @@ app.use(session({
     secret: 'better'
 }));
 app.use(flash());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(serveStatic(path.join(__dirname, 'public'), {
+    maxAge: '10d',
+}));
 
 app.use('*', (req, res, next)=>{
     res.locals.logged = req.session.user !== undefined;
