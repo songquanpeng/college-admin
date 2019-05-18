@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Data = require("../models/Data").Data;
 const isAdmin = require("../middlewares/check").isAdmin;
+const record = require('../middlewares/record').record;
 
 
-router.get('/', function (req, res, next) {
+router.get('/', record, function (req, res, next) {
     res.render('index', {
         info: "Welcome, dear user :)",
         error: req.flash('error')

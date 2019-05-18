@@ -10,7 +10,6 @@ const indexRouter = require('./routes/index');
 const queryRouter = require('./routes/query');
 const updateRouter = require('./routes/update');
 
-const record = require('./middlewares/record').record;
 require('./models/initialization');
 
 const app = express();
@@ -38,7 +37,6 @@ app.use('*', (req, res, next)=>{
     res.locals.logged = req.session.user !== undefined;
     next();
 });
-app.use('*', record);
 app.use('/', indexRouter);
 app.use('/query', queryRouter);
 app.use('/update', updateRouter);
