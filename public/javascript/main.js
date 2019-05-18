@@ -9,46 +9,47 @@ function hideModifyBtn(userType) {
 
 function showStudentEditDialog(originSID) {
     // set value the original student ID of the edit dialog
-    $('#sOID').attr({"value":originSID});
+    $('#sOID').prop({"value":originSID});
     $('#studentEditDialog').modal('show');
 }
 function showStudentDeleteDialog(deleteSID) {
     // set value the deleting student ID of the delete dialog
-    $('#sDID').attr({"value":deleteSID});
+    $('#sDID').prop({"value":deleteSID});
     $('#studentDeleteDialog').modal('show');
 }
 
-function showTeacherEditDialog(originTID) {
-    $('#tOID').attr({"value":originTID});
+function showTeacherEditDialog(originTID, originCName) {
+    $('#tOID').prop({"value":originTID});
+    $('#tOCourse').prop({"value":originCName});
     $('#teacherEditDialog').modal('show');
 }
 function showTeacherDeleteDialog(deleteTID) {
-    $('#tDID').attr({"value":deleteTID});
+    $('#tDID').prop({"value":deleteTID});
     $('#teacherDeleteDialog').modal('show');
 }
 
 function showCourseEditDialog(originCID) {
-    $('#cOID').attr({"value":originCID});
+    $('#cOID').prop({"value":originCID});
     $('#courseEditDialog').modal('show');
 }
 function showCourseDeleteDialog(deleteCID) {
-    $('#cDID').attr({"value":deleteCID});
+    $('#cDID').prop({"value":deleteCID});
     $('#courseDeleteDialog').modal('show');
 }
 
 function showCciEditDialog(originSID, originCID, originTID, originChosenYear) {
-    $('#cciOSID').attr({"value":originSID});
-    $('#cciOCID').attr({"value":originCID});
-    $('#cciOTID').attr({"value":originTID});
-    $('#cciOChoYear').attr({"value":originChosenYear});
+    $('#cciOSID').prop({"value":originSID});
+    $('#cciOCID').prop({"value":originCID});
+    $('#cciOTID').prop({"value":originTID});
+    $('#cciOChoYear').prop({"value":originChosenYear});
     $('#cciEditDialog').modal('show');
 }
 
 function showCciDeleteDialog(deleteSID, deleteCID, deleteTID, deleteChosenYear) {
-    $('#cciDelSID').attr({"value":deleteSID});
-    $('#cciDelCID').attr({"value":deleteCID});
-    $('#cciDelTID').attr({"value":deleteTID});
-    $('#cciDelChoYear').attr({"value":deleteChosenYear});
+    $('#cciDelSID').prop({"value":deleteSID});
+    $('#cciDelCID').prop({"value":deleteCID});
+    $('#cciDelTID').prop({"value":deleteTID});
+    $('#cciDelChoYear').prop({"value":deleteChosenYear});
     $('#cciDeleteDialog').modal('show');
 }
 

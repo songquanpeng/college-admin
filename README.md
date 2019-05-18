@@ -1,12 +1,15 @@
 ## Description
 **This is an awesome MIS (Manage Information System) for college.** 
 
+## TODO
++ [ ] Add an attribute "employment" for teacher :{"active","inactive"}
+
 ## Feature
-+ [ ] Query, add, delete and modify data
-+ [ ] Sign up, log in and log out
-+ [ ] Get statistical data
-+ [ ] Permission control
-+ [ ] User management
++ [x] Query, add, delete and modify data
++ [x] Sign up, log in and log out
++ [x] Get statistical data
++ [x] Permission control
++ [x] User management
 + [ ] Information collection
 + [ ] Message system
 

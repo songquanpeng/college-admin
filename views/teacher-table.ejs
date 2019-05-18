@@ -21,7 +21,7 @@
                 <td><%= teacher.sex %></td>
                 <td><%= teacher.cName %></td>
                 <td class="modify">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="showTeacherEditDialog(<%= teacher.teacherID %>)">EDIT</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showTeacherEditDialog('<%= teacher.teacherID %>','<%= teacher.cName %>')">EDIT</button>
                 </td>
                 <td class="modify">
                     <button type="button" class="btn btn-danger btn-sm" onclick="showTeacherDeleteDialog(<%= teacher.teacherID %>)">DELETE</button>

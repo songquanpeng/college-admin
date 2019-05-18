@@ -23,10 +23,10 @@
                 <td><%= CCI.chosenYear %></td>
                 <td><%= CCI.score %></td>
                 <td class="modify">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="showCciEditDialog(<%= CCI.studentID, CCI.courseID, CCI.teacherID, CCI.chosenYear %>)">EDIT</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showCciEditDialog(<%= CCI.studentID +','+ CCI.courseID +','+ CCI.teacherID +','+ CCI.chosenYear %>)">EDIT</button>
                 </td>
                 <td class="modify">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="showCciDeleteDialog(<%= CCI.studentID, CCI.courseID, CCI.teacherID, CCI.chosenYear %>)">DELETE</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="showCciDeleteDialog(<%= CCI.studentID +','+ CCI.courseID +','+ CCI.teacherID +','+ CCI.chosenYear %>)">DELETE</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-primary btn-sm">VIEW</button>

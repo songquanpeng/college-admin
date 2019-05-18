@@ -258,14 +258,26 @@ class Data {
             if (body.tCourse !== ""){
                 updateCourse = true;
             }
-            if (setClause === "SET" && body.tCourse === ""){
+            if (setClause === 'SET' && body.tCourse === ""){
                 console.error("Empty update request");
                 callback(new Error("ERROR: Empty update request"), undefined);
             } else {
-                setClause = setClause.slice(0, -1); //delete the last ','
-                db.run('UPDATE teacher ' + setClause + ' WHERE teacherID = "' + body.tOID + '"', callback);
-                if (updateCourse){
-                    db.run('UPDATE course SET name = "' + body.tCourse + '" WHERE teacherID = "' + body.tID +'"', callback);
+                let sql2 = 'UPDATE course SET name = "' + body.tCourse + '" WHERE teacherID = "' + body.tOID +'" AND' +
+                    ' name = "' + body.tOCourse + '"';
+                if (body.tID !== ""){
+                    sql2 = 'UPDATE course SET name = "' + body.tCourse + '", teacherID = "' + body.tID + '" WHERE teacherID = "' + body.tOID +'" AND' +
+                        ' name = "' + body.tOCourse + '"';
+                }
+                if (setClause === 'SET') {
+                    db.run(sql2, callback);
+                } else {
+                    setClause = setClause.slice(0, -1); //delete the last ','
+                    let sql1 = 'UPDATE teacher ' + setClause + ' WHERE teacherID = "' + body.tOID + '"';
+                    if (updateCourse){
+                        db.exec(sql2 + ';' + sql1, callback);
+                    } else {
+                        db.run(sql1, callback);
+                    }
                 }
             }
         } else if (queryType === "course"){
@@ -324,6 +336,30 @@ class Data {
                 whereClause += ' chosenYear = "' + body.cciOChoYear + '"';
                 db.run('UPDATE cc_info ' + setClause + whereClause, callback);
             }
+        }
+    }
+
+    static  deleteDataByTypeAndReqBody(queryType, body, callback){
+        if (queryType === "student"){
+            let sql1= 'DELETE FROM cc_info WHERE studentID = "' + body.sDID + '"; '; //deleting foreign key constraint
+            let sql2 = 'DELETE FROM student WHERE studentID = "' + body.sDID + '"';
+            db.exec(sql1 + sql2, callback);
+        } else if (queryType === "teacher"){
+            let sql1= 'DELETE FROM cc_info WHERE teacherID = "' + body.tDID + '"; '; //deleting foreign key constraint
+            let sql2 = 'DELETE FROM course WHERE teacherID = "' + body.tDID + '"; '; //deleting foreign key constraint
+            let sql3 = 'DELETE FROM teacher WHERE teacherID = "' + body.tDID + '"';
+            db.exec(sql1 + sql2 + sql3, callback);
+        } else if (queryType === "course"){
+            let sql1 = 'DELETE FROM cc_info WHERE courseID = "' + body.cDID + '"; '; //deleting foreign key constraint
+            let sql2 = 'DELETE FROM course WHERE courseID = "' + body.cDID + '"';
+            db.exec(sql1 + sql2, callback);
+        } else if (queryType === "cc-info"){
+            let whereClause = 'WHERE';
+            whereClause += ' studentID = "' + body.cciDelSID + '" AND';
+            whereClause += ' courseID = "' + body.cciDelCID + '" AND';
+            whereClause += ' teacherID = "' + body.cciDelTID + '" AND';
+            whereClause += ' chosenYear = "' + body.cciDelChoYear + '"';
+            db.run('DELETE FROM cc_info ' + whereClause, callback);
         }
     }
 }
