@@ -92,13 +92,14 @@ router.post('/insert',isAdmin,function (req, res, next) {
         }else {
             req.flash('info', "Insert successfully.")
         }
-        res.render('query', {
-            userType: "",
-            queryType: "",
-            userData: undefined,
-            info : req.flash('info'),
-            error : req.flash('error')
-        });
+        // res.render('query', {
+        //     userType: "",
+        //     queryType: "",
+        //     userData: undefined,
+        //     info : req.flash('info'),
+        //     error : req.flash('error')
+        // });
+        res.redirect('/query')
     });
 });
 

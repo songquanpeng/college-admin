@@ -213,6 +213,119 @@ class Data {
             callback(undefined, undefined);
         }
     }
+
+    static updateDataByTypeAndReqBody(queryType , body, callback){
+        let setClause = "SET";
+        if (queryType === "student"){
+            // constructing SQL set-clause
+            if (body.sID !== ""){
+                setClause += ' studentID = "' + body.sID + '",';
+            }
+            if (body.sName !== ""){
+                setClause += ' name = "' + body.sName + '",';
+            }
+            if (body.sSex !== ""){
+                setClause += ' sex = "' + body.sSex + '",';
+            }
+            if (body.sEnAge !== ""){
+                setClause += ' entranceAge = "' + body.sEnAge + '",';
+            }
+            if (body.sEnYear !== ""){
+                setClause += ' entranceYear = "' + body.sEnYear +'",';
+            }
+            if (body.sMajor !== ""){
+                setClause += ' major = "' + body.sMajor +'",';
+            }
+            if (setClause === "SET"){
+                console.error("Empty update request");
+                callback(new Error("ERROR: Empty update request"), undefined);
+            } else {
+                setClause = setClause.slice(0, -1); //delete the last ','
+                db.run('UPDATE student ' + setClause + ' WHERE studentID = "' + body.sOID + '"', callback);
+            }
+        } else if (queryType === "teacher"){
+            // constructing SQL set-clause
+            let updateCourse = false;
+            if (body.tID !== ""){
+                setClause += ' teacherID = "' + body.tID + '",';
+            }
+            if (body.tName !== ""){
+                setClause += ' name = "' + body.tName + '",';
+            }
+            if (body.tSex !== ""){
+                setClause += ' sex = "' + body.tSex + '",';
+            }
+            if (body.tCourse !== ""){
+                updateCourse = true;
+            }
+            if (setClause === "SET" && body.tCourse === ""){
+                console.error("Empty update request");
+                callback(new Error("ERROR: Empty update request"), undefined);
+            } else {
+                setClause = setClause.slice(0, -1); //delete the last ','
+                db.run('UPDATE teacher ' + setClause + ' WHERE teacherID = "' + body.tOID + '"', callback);
+                if (updateCourse){
+                    db.run('UPDATE course SET name = "' + body.tCourse + '" WHERE teacherID = "' + body.tID +'"', callback);
+                }
+            }
+        } else if (queryType === "course"){
+            // constructing SQL set-clause
+            if (body.cID !== ""){
+                setClause += ' courseID = "' + body.cID + '",';
+            }
+            if (body.cName !== ""){
+                setClause += ' name = "' + body.cName + '",';
+            }
+            if (body.cTID !== ""){
+                setClause += ' teacherID = "' + body.cTID + '",';
+            }
+            if (body.cCredit !== ""){
+                setClause += ' credit = ' + body.cCredit + ',';
+            }
+            if (body.cGrade !== ""){
+                setClause += ' grade = ' + body.cGrade + ',';
+            }
+            if (body.cCanYear !== ""){
+                setClause += ' canceledYear = ' + body.cCanYear +',';
+            }
+            if (setClause === "SET"){
+                console.error("Empty update request");
+                callback(new Error("ERROR: Empty update request"), undefined);
+            } else {
+                setClause = setClause.slice(0, -1); //delete the last ','
+                db.run('UPDATE course ' + setClause + ' WHERE courseID = "' + body.cOID + '"', callback);
+            }
+        } else if (queryType === "cc-info"){
+            // constructing SQL set-clause
+            if (body.cciSID !== ""){
+                setClause += ' studentID = "' + body.cciSID + '",';
+            }
+            if (body.cciCID !== ""){
+                setClause += ' courseID = "' + body.cciCID + '",';
+            }
+            if (body.cciTID !== ""){
+                setClause += ' teacherID = "' + body.cciTID + '",';
+            }
+            if (body.cciChoYear !== ""){
+                setClause += ' chosenYear = ' + body.cciChoYear + ',';
+            }
+            if (body.cciScore !== ""){
+                setClause += ' score = ' + body.cciScore +',';
+            }
+            if (setClause === "SET"){
+                console.error("Empty update request");
+                callback(new Error("ERROR: Empty update request"), undefined);
+            } else {
+                setClause = setClause.slice(0, -1); //delete the last ','
+                let whereClause = 'WHERE';
+                whereClause += ' studentID = "' + body.cciOSID + '" AND';
+                whereClause += ' courseID = "' + body.cciOCID + '" AND';
+                whereClause += ' teacherID = "' + body.cciOTID + '" AND';
+                whereClause += ' chosenYear = "' + body.cciOChoYear + '"';
+                db.run('UPDATE cc_info ' + setClause + whereClause, callback);
+            }
+        }
+    }
 }
 
 module.exports.db = db;
