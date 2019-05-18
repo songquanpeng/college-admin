@@ -57,7 +57,8 @@ class Data {
         } else if (dataType === "teacher") {
             db.get('SELECT * FROM teacher WHERE teacherID = ?', id, callback);
         } else if (dataType === "cc-info") {
-            db.get('SELECT * FROM cc_info WHERE studentID = ? AND teacherID = ? AND courseID = ? AND chosenYear = ?', id.studentID, id.teacherID, id.courseID, id.chosenYear, callback);
+            let nid = JSON.parse(id);
+            db.get('SELECT * FROM cc_info WHERE studentID = ? AND teacherID = ? AND courseID = ? AND chosenYear = ?', nid.studentID, nid.teacherID, nid.courseID, nid.chosenYear, callback);
         } else {
             console.error("Unexpected data type: " + dataType);
             callback(undefined, undefined);
@@ -90,7 +91,7 @@ class Data {
                 db.all('SELECT * FROM student', callback);
             } else {
                 whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
-                console.log("WHERE Clause: " + whereClause);
+                //console.log("WHERE Clause: " + whereClause);
                 db.all('SELECT * FROM student ' + whereClause, callback);
             }
         } else if (body.queryType === "teacher") {
@@ -111,7 +112,7 @@ class Data {
             } else {
                 //whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
                 whereClause += ' teacher.teacherID = course.teacherID';
-                console.log("WHERE Clause: " + whereClause);
+                //console.log("WHERE Clause: " + whereClause);
                 db.all('SELECT teacher.*, course.name as cName FROM teacher, course ' + whereClause, callback);
             }
         } else if (body.queryType === "course") {
@@ -137,7 +138,7 @@ class Data {
                 db.all('SELECT * FROM course', callback);
             } else {
                 whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
-                console.log("WHERE Clause: " + whereClause);
+                //console.log("WHERE Clause: " + whereClause);
                 db.all('SELECT * FROM course ' + whereClause, callback);
             }
         } else if (body.queryType === "cc-info") {
@@ -160,7 +161,7 @@ class Data {
                 db.all('SELECT * FROM cc_info', callback);
             } else {
                 whereClause = whereClause.slice(0, -3); //cut off the last 'AND' substring
-                console.log("WHERE Clause: " + whereClause);
+                //console.log("WHERE Clause: " + whereClause);
                 db.all('SELECT * FROM cc_info ' + whereClause, callback);
             }
         } else if (body.queryType === "statistic") {

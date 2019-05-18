@@ -16,8 +16,8 @@ router.post("/", checkLogin, function (req, res) {
     Data.getDataByReqBody(req.body, function (error, data) {
         //const userType = req.session.user.userType;
         //console.log(userType);
-        console.log(error);
-        console.log(data);
+        // console.log(error);
+        // console.log(data);
         res.render('query', {
             userType: req.session.user.userType,
             queryType: req.body.queryType,

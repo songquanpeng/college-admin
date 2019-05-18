@@ -36,7 +36,13 @@
                 <tr>
                     <td><input type="text" class="form-control" name="sID" placeholder="student ID"></td>
                     <td><input type="text" class="form-control" name="sName" placeholder="student's name"></td>
-                    <td><input type="text" class="form-control" name="sSex" placeholder="student's sex"></td>
+                    <td>
+                        <select class="form-control" name="sSex">
+                            <option selected value="">All</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </td>
                     <td><input type="text" class="form-control" name="sEnAge" placeholder="entrance age"></td>
                     <td><input type="text" class="form-control" name="sEnYear" placeholder="entrance year"></td>
                     <td><input type="text" class="form-control" name="sMajor" placeholder="major"></td>
@@ -60,8 +66,13 @@
                 <tr>
                     <td><input type="text" class="form-control" name="tID" placeholder="teacher ID"></td>
                     <td><input type="text" class="form-control" name="tName" placeholder="teacher's name"></td>
-                    <td><input type="text" class="form-control" name="tSex" placeholder="teacher's sex"></td>
-                    <td><input type="text" class="form-control" name="tCourse" placeholder="teaching course"></td>
+                    <td>
+                        <select class="form-control" name="tSex">
+                            <option selected value="">All</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </td>                    <td><input type="text" class="form-control" name="tCourse" placeholder="teaching course"></td>
                     <td><button type="submit" class="btn btn-primary">Query</button></td>
                 </tr>
                 </tbody>

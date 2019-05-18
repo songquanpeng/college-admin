@@ -3,6 +3,7 @@
 
 ## TODO
 + [ ] Add an attribute "employment" for teacher :{"active","inactive"}
++ [ ] Automatically query after clicking the type button
 
 ## Feature
 + [x] Query, add, delete and modify data

@@ -27,7 +27,11 @@
                     <button type="button" class="btn btn-danger btn-sm" onclick="showTeacherDeleteDialog(<%= teacher.teacherID %>)">DELETE</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">VIEW</button>
+                    <form action="/detail" method="post">
+                        <input type="text" class="form-control" name="type" value="teacher" hidden>
+                        <input type="text" class="form-control" name="id" value="<%= teacher.teacherID %>" hidden>
+                        <button type="submit" class="btn btn-primary btn-sm">VIEW</button>
+                    </form>
                 </td>
             </tr>
     <% })}else{ %>

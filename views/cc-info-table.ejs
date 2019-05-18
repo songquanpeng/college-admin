@@ -29,7 +29,11 @@
                     <button type="button" class="btn btn-danger btn-sm" onclick="showCciDeleteDialog(<%= CCI.studentID +','+ CCI.courseID +','+ CCI.teacherID +','+ CCI.chosenYear %>)">DELETE</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">VIEW</button>
+                    <form action="/detail" method="post"> <!--https://www.httpbin.org/post-->
+                        <input type="text" class="form-control" name="type" value="cc-info" hidden>
+                        <input type="text" id="cciDetailID" class="form-control" name="id" value="<%= JSON.stringify({studentID:CCI.studentID, courseID:CCI.courseID, teacherID:CCI.teacherID, chosenYear:CCI.chosenYear}) %>" hidden>
+                        <button type="submit" class="btn btn-primary btn-sm">VIEW</button>
+                    </form>
                 </td>
             </tr>
     <% })}else{ %>
