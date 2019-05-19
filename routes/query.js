@@ -28,51 +28,8 @@ router.post("/", checkLogin, function (req, res) {
     });
 });
 
-router.post("/update-student/", checkLogin, isAdmin, function (req, res) {
-   Data.updateDataByTypeAndReqBody("student", req.body, function (error) {
-       if (error){
-           req.flash('error', error.message);
-       } else {
-           req.flash('info', "Update successfully")
-       }
-       res.redirect('back');
-   })
-});
 
-router.post("/update-teacher/", checkLogin, isAdmin, function (req, res) {
-    Data.updateDataByTypeAndReqBody("teacher", req.body, function (error) {
-        if (error){
-            req.flash('error', error.message);
-        } else {
-            req.flash('info', "Update successfully")
-        }
-        res.redirect('back');
-    })
-});
-
-router.post("/update-course/", checkLogin, isAdmin, function (req, res) {
-    Data.updateDataByTypeAndReqBody("course", req.body, function (error) {
-        if (error){
-            req.flash('error', error.message);
-        } else {
-            req.flash('info', "Update successfully")
-        }
-        res.redirect('back');
-    })
-});
-
-router.post("/update-cc-info/", checkLogin, isAdmin, function (req, res) {
-    Data.updateDataByTypeAndReqBody("cc-info", req.body, function (error) {
-        if (error){
-            req.flash('error', error.message);
-        } else {
-            req.flash('info', "Update successfully")
-        }
-        res.redirect('back');
-    })
-});
-
-router.post("/delete-student/", checkLogin, isAdmin, function (req, res) {
+router.post("/delete-student", checkLogin, isAdmin, function (req, res) {
     Data.deleteDataByTypeAndReqBody("student", req.body, function (error) {
         if (error){
             req.flash('error', error.message);
@@ -83,7 +40,7 @@ router.post("/delete-student/", checkLogin, isAdmin, function (req, res) {
     })
 });
 
-router.post("/delete-teacher/", checkLogin, isAdmin, function (req, res) {
+router.post("/delete-teacher", checkLogin, isAdmin, function (req, res) {
     Data.deleteDataByTypeAndReqBody("teacher", req.body, function (error) {
         if (error){
             req.flash('error', error.message);
@@ -94,7 +51,7 @@ router.post("/delete-teacher/", checkLogin, isAdmin, function (req, res) {
     })
 });
 
-router.post("/delete-course/", checkLogin, isAdmin, function (req, res) {
+router.post("/delete-course", checkLogin, isAdmin, function (req, res) {
     Data.deleteDataByTypeAndReqBody("course", req.body, function (error) {
         if (error){
             req.flash('error', error.message);
@@ -105,7 +62,7 @@ router.post("/delete-course/", checkLogin, isAdmin, function (req, res) {
     })
 });
 
-router.post("/delete-cc-info/", checkLogin, isAdmin, function (req, res) {
+router.post("/delete-cc-info", checkLogin, isAdmin, function (req, res) {
     Data.deleteDataByTypeAndReqBody("cc-info", req.body, function (error) {
         if (error){
             req.flash('error', error.message);

@@ -42,7 +42,7 @@ class Data {
         } else if (dataType === "teacher") {
             db.run('INSERT INTO teacher (teacherID, name, sex, password) VALUES (?, ?, ?, ?)', data.teacherID, data.name, data.sex, '123456', callback);
         } else if (dataType === "cc-info") {
-            db.run('INSERT INTO student (studentID, courseID, teacherID, chosenYear, score) VALUES (?, ?, ?, ?, ?)', data.studentID, data.courseID, data.teacherID, data.chosenYear, data.score, callback);
+            db.run('INSERT INTO cc_info (studentID, courseID, teacherID, chosenYear, score) VALUES (?, ?, ?, ?, ?)', data.studentID, data.courseID, data.teacherID, data.chosenYear, data.score, callback);
         } else {
             console.error("Unexpected data type: " + dataType);
             callback(new Error("Unexpected data type: " + dataType), undefined);
@@ -56,12 +56,14 @@ class Data {
             db.get('SELECT * FROM admin WHERE adminID = ?', id, callback);
         } else if (dataType === "teacher") {
             db.get('SELECT * FROM teacher WHERE teacherID = ?', id, callback);
+        } else if (dataType === "course") {
+            db.get('SELECT * FROM course WHERE courseID = ?', id, callback);
         } else if (dataType === "cc-info") {
             let nid = JSON.parse(id);
             db.get('SELECT * FROM cc_info WHERE studentID = ? AND teacherID = ? AND courseID = ? AND chosenYear = ?', nid.studentID, nid.teacherID, nid.courseID, nid.chosenYear, callback);
         } else {
             console.error("Unexpected data type: " + dataType);
-            callback(undefined, undefined);
+            callback(new Error("Unexpected data type:"  + dataType), undefined);
         }
     }
 
@@ -177,7 +179,7 @@ class Data {
             }
         } else {
             console.error("Unexpected data type: " + body.dataType);
-            callback(undefined, undefined);
+            callback(new Error("Unexpected data type:"  + body.dataType), undefined);
         }
     }
 
@@ -308,18 +310,19 @@ class Data {
 
     static  deleteDataByTypeAndReqBody(queryType, body, callback){
         if (queryType === "student"){
-            let sql1= 'DELETE FROM cc_info WHERE studentID = "' + body.sDID + '"; '; //deleting foreign key constraint
+            //due to using on delete event in database structure, no longer need to delete foreign key constraint now.
+            //let sql1= 'DELETE FROM cc_info WHERE studentID = "' + body.sDID + '"; '; //deleting foreign key constraint
             let sql2 = 'DELETE FROM student WHERE studentID = "' + body.sDID + '"';
-            db.exec(sql1 + sql2, callback);
+            db.exec(sql2, callback);
         } else if (queryType === "teacher"){
-            let sql1= 'DELETE FROM cc_info WHERE teacherID = "' + body.tDID + '"; '; //deleting foreign key constraint
-            let sql2 = 'DELETE FROM course WHERE teacherID = "' + body.tDID + '"; '; //deleting foreign key constraint
+            //let sql1= 'DELETE FROM cc_info WHERE teacherID = "' + body.tDID + '"; '; //deleting foreign key constraint
+            //let sql2 = 'DELETE FROM course WHERE teacherID = "' + body.tDID + '"; '; //deleting foreign key constraint
             let sql3 = 'DELETE FROM teacher WHERE teacherID = "' + body.tDID + '"';
-            db.exec(sql1 + sql2 + sql3, callback);
+            db.exec(sql3, callback);
         } else if (queryType === "course"){
-            let sql1 = 'DELETE FROM cc_info WHERE courseID = "' + body.cDID + '"; '; //deleting foreign key constraint
+            //let sql1 = 'DELETE FROM cc_info WHERE courseID = "' + body.cDID + '"; '; //deleting foreign key constraint
             let sql2 = 'DELETE FROM course WHERE courseID = "' + body.cDID + '"';
-            db.exec(sql1 + sql2, callback);
+            db.exec(sql2, callback);
         } else if (queryType === "cc-info"){
             let whereClause = 'WHERE';
             whereClause += ' studentID = "' + body.cciDelSID + '" AND';
