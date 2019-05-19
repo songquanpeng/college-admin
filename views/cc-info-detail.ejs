@@ -2,27 +2,31 @@
 <%- include('navigation-bar') %>
 <%- include('message') %>
 <div class="container" style="max-width: 500px" >
-    <form action="/update/cc-info" method="post">
+    <form action="/update/cc-info" method="post"> <!--https://httpbin.org/post  /update/cc-info-->
         <h2>Details</h2>
+        <input type="text" class="form-control" name="cciOSID" value="<%= data.studentID%>" hidden>
+        <input type="text" class="form-control" name="cciOCID" value="<%= data.courseID%>" hidden>
+        <input type="text" class="form-control" name="cciOTID" value="<%= data.teacherID%>" hidden>
+        <input type="text" class="form-control" name="cciOChoYear" value="<%= data.chosenYear%>" hidden>
         <div class="form-group">
             <label for="studentID">Student ID:</label>
-            <input type="text" class="form-control" id="studentID" name="studentID" readonly value="<%= data.studentID%>">
+            <input type="text" class="form-control" id="studentID" name="cciSID" readonly value="<%= data.studentID%>">
         </div>
         <div class="form-group">
             <label for="courseID">Course ID:</label>
-            <input type="text" class="form-control" id="courseID" name="courseID" readonly value="<%= data.courseID%>">
+            <input type="text" class="form-control" id="courseID" name="cciCID" readonly value="<%= data.courseID%>">
         </div>
         <div class="form-group">
             <label for="teacherID">Teacher ID:</label>
-            <input type="text" class="form-control" id="teacherID" name="teacherID" readonly value="<%= data.teacherID%>">
+            <input type="text" class="form-control" id="teacherID" name="cciTID" readonly value="<%= data.teacherID%>">
         </div>
         <div class="form-group">
             <label for="chosenYear">Chosen Year:</label>
-            <input type="number" class="form-control" id="chosenYear" name="chosenYear" min="2000" max="2100" step="1" value="<%= data.chosenYear%>">
+            <input type="number" class="form-control" id="chosenYear" name="cciChoYear" min="2000" max="2100" step="1" value="<%= data.chosenYear%>">
         </div>
         <div class="form-group">
             <label for="score">Score:</label>
-            <input type="number" class="form-control" id="score" name="score" min="0" max="200" step="1" value="<%= data.score%>">
+            <input type="number" class="form-control" id="score" name="cciScore" min="0" max="200" step="1" value="<%= data.score%>">
         </div>
         <div class="w3-center">
             <button type="reset" class="btn btn-danger">Reset</button>

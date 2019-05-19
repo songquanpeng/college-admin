@@ -298,7 +298,7 @@ class Data {
                 callback(new Error("ERROR: Empty update request"), undefined);
             } else {
                 setClause = setClause.slice(0, -1); //delete the last ','
-                let whereClause = 'WHERE';
+                let whereClause = ' WHERE';
                 whereClause += ' studentID = "' + body.cciOSID + '" AND';
                 whereClause += ' courseID = "' + body.cciOCID + '" AND';
                 whereClause += ' teacherID = "' + body.cciOTID + '" AND';
