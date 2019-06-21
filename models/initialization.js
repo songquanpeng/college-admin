@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('data.db');
 
 db.serialize(function () {
-    const createStudentTable = 'create table if not exists student(studentID varchar(10),name varchar(20),sex varchar(10),entranceAge smallint,entranceYear smallint,major varchar(50),password varchar(12),primary key(studentID));\n';
+    const createStudentTable = 'create table if not exists student(studentID varchar(10),name varchar(20),sex varchar(10),entranceAge smallint,entranceYear smallint,major varchar(50),password varchar(12),primary key(studentID)) ;\n';
     db.run(createStudentTable);
     const createTeacherTable = 'create table if not exists teacher(teacherID varchar(10),name varchar(20),sex varchar(10),password varchar(12),primary key (teacherID));\n';
     db.run(createTeacherTable);
@@ -14,5 +14,6 @@ db.serialize(function () {
     db.run(createAdminTable);
     const createSystemLogTable = 'create table if not exists system_log(logID integer, time varchar(30), userType varchar(10), userID varchar(10), ip varchar(20), primary key (logID));';
     db.run(createSystemLogTable);
+    db.run('PRAGMA foreign_keys=ON');
     console.log("Database initialization completed.");
 });
