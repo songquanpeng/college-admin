@@ -1,5 +1,6 @@
+# Administration System for College
 ## Description
-**This is an awesome MIS (Manage Information System) for college.** 
+This is a simple administration system for college.
 
 ## TODO
 + [ ] Add an attribute "employment" for teacher :{"active","inactive"}
